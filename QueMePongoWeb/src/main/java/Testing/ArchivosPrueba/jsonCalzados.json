@@ -1,0 +1,113 @@
+[	
+	{
+
+		"colorPrimario": "Negro",
+		"colorSecundario": "Blanco",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Naranja",
+		"colorSecundario": "Gris",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Blanca",
+		"colorSecundario": "",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Verde",
+		"colorSecundario": "Blanco",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Rojo",
+		"colorSecundario": "Gris",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Azul",
+		"colorSecundario": "",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Dorado",
+		"colorSecundario": "Negro",
+		"tela": "Lona",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Amarilla",
+		"colorSecundario": "Gris",
+		"tela": "Lona",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Naranja",
+		"colorSecundario": "",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Azul",
+		"colorSecundario": "Rojo",
+		"tela": "Cuero",
+		"EnumCategoria": "Calzado",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	}
+
+]

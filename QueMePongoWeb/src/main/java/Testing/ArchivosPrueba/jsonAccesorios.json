@@ -1,0 +1,61 @@
+[
+
+	{
+
+			"colorPrimario": "Marron",
+			"colorSecundario": "Blanco",
+			"tela": "Seda",
+			"EnumCategoria": "Accesorio",
+			"numeroDeCapa": "Uno",
+			"urlImagen": "",
+			"disponibleParaSugerir": true
+
+	},
+	{
+
+			"colorPrimario": "Naranja",
+			"colorSecundario": "Blanco",
+			"tela": "Lino",
+			"EnumCategoria": "Accesorio",
+			"numeroDeCapa": "Uno",
+			"urlImagen": "",
+			"disponibleParaSugerir": true
+
+	},
+	{
+
+			"colorPrimario": "Verde",
+			"colorSecundario": "Blanco",
+			"tela": "Lino",
+			"EnumCategoria": "Accesorio",
+			"numeroDeCapa": "Uno",
+			"urlImagen": "",
+			"disponibleParaSugerir": true
+
+	},
+	{
+
+			"colorPrimario": "Azul",
+			"colorSecundario": "Negro",
+			"tela": "Seda",
+			"EnumCategoria": "Accesorio",
+			"numeroDeCapa": "Uno",
+			"urlImagen": "",
+			"disponibleParaSugerir": true
+
+	},
+	{
+
+			"colorPrimario": "Negro",
+			"colorSecundario": "",
+			"tela": "Seda",
+			"EnumCategoria": "Accesorio",
+			"numeroDeCapa": "Uno",
+			"urlImagen": "",
+			"disponibleParaSugerir": true
+
+	}
+
+
+
+]

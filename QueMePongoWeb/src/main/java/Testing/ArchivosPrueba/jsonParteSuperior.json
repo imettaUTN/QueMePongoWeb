@@ -1,0 +1,112 @@
+[	{
+
+		"colorPrimario": "Rojo",
+		"colorSecundario": "Azul",
+		"tela": "Gabardina",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Verde",
+		"colorSecundario": "Amarillo",
+		"tela": "Gabardina",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Marron",
+		"colorSecundario": "Blanco",
+		"tela": "Gabardina",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Rojo",
+		"colorSecundario": "Azul",
+		"tela": "Algodon",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Verde",
+		"colorSecundario": "Amarillo",
+		"tela": "Algodon",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Marron",
+		"colorSecundario": "Blanco",
+		"tela": "Algodon",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Rojo",
+		"colorSecundario": "Azul",
+		"tela": "Guata",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Verde",
+		"colorSecundario": "Amarillo",
+		"tela": "Guata",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Marron",
+		"colorSecundario": "Blanco",
+		"tela": "Guata",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Gris",
+		"colorSecundario": "Negro",
+		"tela": "Algodon",
+		"EnumCategoria": "Superior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	}
+
+]	

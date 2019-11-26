@@ -1,0 +1,114 @@
+[	
+	{
+
+		"colorPrimario": "Azul",
+		"colorSecundario": "",
+		"tela": "Jean",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Marron",
+		"colorSecundario": "",
+		"tela": "Jean",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Verde",
+		"colorSecundario": "Negro",
+		"tela": "Algodon",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+		{
+
+		"colorPrimario": "Azul",
+		"colorSecundario": "",
+		"tela": "Algodon",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Marron",
+		"colorSecundario": "",
+		"tela": "Jean",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Azul",
+		"colorSecundario": "Negro",
+		"tela": "Algodon",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+		{
+
+		"colorPrimario": "Verde Oscuro",
+		"colorSecundario": "",
+		"tela": "Guata",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Blanco y Gris",
+		"colorSecundario": "No tiene",
+		"tela": "Jean",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Rojo Fuerte",
+		"colorSecundario": "",
+		"tela": "Jean",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	},
+	{
+
+		"colorPrimario": "Azul Marino",
+		"colorSecundario": "Rojo",
+		"tela": "Jean",
+		"EnumCategoria": "Inferior",
+		"numeroDeCapa": "Uno",
+		"urlImagen": "",
+		"disponibleParaSugerir": true
+
+	}
+
+]	
+	
