@@ -58,15 +58,19 @@ public class Guardarropa {
 		return this.prendasDisponibles.size();
 	}
 	
-	public List<Sugerencia> sugerenciaParteSuperior(int Temperatura){
+	public List<Sugerencia> sugerenciaParteSuperior(int temperatura){
 		
 		System.out.print("Ingreso a method sugerenciaParteSuperior. \n");
 		
-		int nivelDeAbrigo = 7; //Obtener nivel de abrigo para la temperatura dada.
+		
+		
 		int capaMaxima = 0;
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 		
 		if(this.prendasDisponibles.size() >0) {
+			
+		NivelDeAbrigo abrigo = new NivelDeAbrigo();	
+		int nivelDeAbrigo = abrigo.obtenerNivelAbrigo(temperatura);
 		
 		List<Object> parteSuperior = this.prendasDisponibles.stream().filter(p->p.esSuperior() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
 		System.out.print("Cantidad de Prendas Parte Superior: " + parteSuperior.size() + "\n");

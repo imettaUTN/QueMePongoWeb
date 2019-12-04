@@ -19,5 +19,9 @@ public class Repositorio {
 		
 		return perfiles;
 	}
+	
+	public void cerrar() {
+		em.close();
+	}
 
 }

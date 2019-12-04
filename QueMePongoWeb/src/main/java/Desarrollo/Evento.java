@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import Desarrollo.Enumerados.EnumEstadoEvento;
 import Desarrollo.ObjetosValor.UbicacionEvento;
 
-@Entity
+//@Entity
 @Table(name = "Evento")
 public class Evento {
 	
