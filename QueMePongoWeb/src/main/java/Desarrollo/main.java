@@ -1,13 +1,63 @@
 package Desarrollo;
 import java.io.IOException;
+import Repositorio.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import Desarrollo.Enumerados.EnumCategoria;
+import Repositorio.*;
 
 public class main {
 
 	public static void main(String[] args) throws IOException {
+		
+		Perfil perfil;
+		final String PERSISTENCE_UNIT_NAME = "DDS";
+		EntityManagerFactory emFactory;
+		Repositorio repositorio;
+		
+		emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		repositorio = new Repositorio(emFactory.createEntityManager());
+		
+		// ****** Prueba de Persistencia de Perfil ******
+		
+		/*
+		Perfil p1 = new Perfil();
+		p1.setDescripcion("UsuarioComun");
+		repositorio.perfil().persistir(p1);
+		System.out.println("Proceso Finalizado.");
+		System.out.println(p1.getDescripcion());
+		
+		
+		Perfil p2 = new Perfil();
+		p2 = repositorio.perfil().buscarPorId(2); 
+		System.out.println("Perfil Encontrado: \n");
+		System.out.println(p2.getDescripcion());
+		*/
+		
+		// ****** Prueba de Persistencia de Usuario ******
+		
+		
+		Perfil premium = new Perfil();
+		premium = repositorio.perfil().buscarPorId(2); 
+		System.out.println("Perfil Encontrado: \n");
+		System.out.println(premium.getDescripcion());
+		
+		Usuario usuario = new Usuario();
+		usuario.setCodigoUsuario("cromero"); 
+		usuario.setPassword("Sistemas2016");
+		usuario.setNombre("Cristian Ezequiel");
+		usuario.setApellido("Romero");
+		usuario.setUserPremium(true);
+		usuario.setCodPerfil(premium);
+		
+		repositorio.usuario().persistir(usuario);
+		System.out.println("Finaliza persistencia de Usuario \n");
+		
+		/*
 		
 		Guardarropa guardarropa = new Guardarropa(); 
 		guardarropa.setMaximoPrendas(250);
@@ -166,8 +216,10 @@ public class main {
 			
 		}
 		
-		
+		*/
 	}
+	
+	
 	
 }
 	

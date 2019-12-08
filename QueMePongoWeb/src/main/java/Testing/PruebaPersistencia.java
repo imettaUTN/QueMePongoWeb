@@ -1,4 +1,6 @@
+/*
 package Testing;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import javax.persistence.EntityManagerFactory;
@@ -25,13 +27,23 @@ public class PruebaPersistencia {
 		Perfil p1 = new Perfil();
 		p1.setDescripcion("UsuarioPremium");
 		
+		
+		
 		repositorio.perfil().persistir(p1);
 		
 	}
 
 	@Test
-	public void test() {
-		System.out.println("Test Ejecutado!");
-	}
-
+	
+		
+		  public void testExtraerMensaje() {
+		    assertEquals("1","1","1");
+		  }
+		
+	
+	
 }
+
+*/
+
+

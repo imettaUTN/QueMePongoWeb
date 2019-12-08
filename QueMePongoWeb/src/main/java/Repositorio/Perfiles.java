@@ -1,4 +1,4 @@
- package Repositorio;
+package Repositorio;
 import javax.persistence.EntityManager;
 import Desarrollo.Perfil;
 
@@ -8,11 +8,10 @@ public class Perfiles extends Repositorio{
 		super(em);
 	}
 
-	public Perfil buscarPorId(Long id) {
-		return em.find(Perfil.class, id);
+	public Perfil buscarPorId(int i) {
+		return em.find(Perfil.class, i);
 	}
 	
-
 	public void persistir(Perfil perfil){
 		em.getTransaction().begin();
 		em.merge(perfil);

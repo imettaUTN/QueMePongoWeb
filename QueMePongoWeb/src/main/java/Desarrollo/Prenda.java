@@ -1,14 +1,30 @@
 package Desarrollo;
 import java.time.LocalDate;
+import javax.persistence.*;
 import Desarrollo.Enumerados.*;
 
+@Entity
+@Table(name = "Prenda")
 public class Prenda {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "CodPrenda")
 	int id;
+	
+	@Column(name = "Descripcion")
 	private String descripcion;
+	
 	private LocalDate fechaDeCreacion;
-	private String colorPrimario;
-	private String colorSecundario;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ColorPrimario", referencedColumnName = "ColorPrimario")
+	private Colores colorPrimario;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ColorSecundario", referencedColumnName = "ColorSecundario")
+	private Colores colorSecundario;
+	
 	private TipoPrenda tipoPrenda;
 	private EnumCategoria categoria;
 	private String tela;
@@ -65,11 +81,11 @@ public class Prenda {
 		return (categoria == EnumCategoria.Calzado);
 	}
 	
-	public String getColorPrimario() {
+	public Colores getColorPrimario() {
 		return colorPrimario;
 	}
 
-	public String getColorSecundario() {
+	public Colores getColorSecundario() {
 		return colorSecundario;
 	}
 
@@ -93,11 +109,11 @@ public class Prenda {
 		return disponibleParaSugerir;
 	}
 
-	public void setColorPrimario(String colorPrimario) {
+	public void setColorPrimario(Colores colorPrimario) {
 		this.colorPrimario = colorPrimario;
 	}
 
-	public void setColorSecundario(String colorSecundario) {
+	public void setColorSecundario(Colores colorSecundario) {
 		this.colorSecundario = colorSecundario;
 	}
 

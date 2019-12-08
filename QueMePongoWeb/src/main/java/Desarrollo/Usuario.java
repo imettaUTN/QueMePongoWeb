@@ -12,18 +12,36 @@ import javax.persistence.*;
 public class Usuario {
 
 	@Id
+	@Column(name = "UsrCod")
 	private String codigoUsuario;	
-	private String password;
-	private String nombre;
-	private String apellido; 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "codPerfil", referencedColumnName = "PrfCod")
-	private Perfil codPerfil;
-	private boolean userPremium;
-	private LocalDate fechaAlta;
-	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();
-	private List<Evento> eventos = new ArrayList<Evento>();
 	
+	@Column(name = "UsrPass")
+	private String password;
+	
+	@Column(name = "Nombre")
+	private String nombre;
+	
+	@Column(name = "Apellido")
+	private String apellido; 
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "PrfCod", referencedColumnName = "PrfCod")
+	private Perfil codPerfil;
+	
+	@Column(name = "UsrPremium")
+	private boolean userPremium;
+	
+	private LocalDate fechaAlta;
+	
+	/*
+	@OneToMany(mappedBy = "Guardarropa", cascade = CascadeType.ALL)
+	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();
+	
+	@OneToMany(mappedBy = "Evento", cascade = CascadeType.ALL)
+	private List<Evento> eventos = new ArrayList<Evento>();
+	*/
+	
+	/*
 	public void CargarEvento(LocalDate fecha, UbicacionEvento ubicacion, TipoEvento tipo) throws Exception{
 		
 		Evento evento = new Evento();
@@ -31,19 +49,24 @@ public class Usuario {
 		this.eventos.add(evento);
 		evento.ProcesarEvento();
 	}
+	*/
 	
 	// Nota: Valor false porque supera el limite disponible.
+	/*
 	public boolean agregarPrendaAGuardarropa(Prenda prenda, int guardarropa){
 		
 		return this.getGuardarropas().get(guardarropa).agregarPrenda(prenda);
 		
 	}
+	*/
 	
+	/*
 	public void eliminarPrenda(Prenda prenda, int guardarropa){
 		
 		this.getGuardarropas().get(guardarropa).eliminarPrenda(prenda);
 		
 	}
+	*/
 	
 	// Ver Tema de Rechazo.
 	public void aceptarSugerencia(Sugerencia sugerencia, Evento evento){
@@ -60,27 +83,33 @@ public class Usuario {
 		
 	}
 	
+	/*
 	public int cantidadDeGuardarropas() {
 			
 			return this.guardarropas.size();
 			
 	}
+	*/
 	
-	
+	/*
 	public void eliminarGuardarropa(int guardarropa, boolean compartido){
 		
 		this.guardarropas.remove(guardarropa);
 		
 	}
+	*/
 	
+	
+	/*
 	public void crearGuardarropa(String desc, boolean compartido){
 		
 		Guardarropa nuevoGuardarropa = new Guardarropa();
 		nuevoGuardarropa.crearGuardarropa(desc, compartido, this);
 		this.guardarropas.add(nuevoGuardarropa);
 	}
+	*/
 
-	@Column(name = "UsrCod")  
+	
 	public String getCodigoUsuario() {
 		return codigoUsuario;
 	}
@@ -89,7 +118,6 @@ public class Usuario {
 		this.codigoUsuario = codigoUsuario;
 	}
 
-	@Column(name = "UsrPass")
 	public String getPassword() {
 		return password;
 	}
@@ -98,7 +126,6 @@ public class Usuario {
 		this.password = password;
 	}
 
-	@Column(name = "Nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -107,7 +134,6 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	@Column(name = "Apellido")
 	public String getApellido() {
 		return apellido;
 	}
@@ -124,7 +150,6 @@ public class Usuario {
 		this.codPerfil = codPerfil;
 	}
 
-	@Column(name = "UsrPremium")
 	public boolean isUserPremium() {
 		return userPremium;
 	}
@@ -141,6 +166,7 @@ public class Usuario {
 		this.fechaAlta = fechaAlta;
 	}
 
+	/*
 	public List<Guardarropa> getGuardarropas() {
 		return guardarropas;
 	}
@@ -156,5 +182,6 @@ public class Usuario {
 	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
+	*/
 	
 }

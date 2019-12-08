@@ -7,11 +7,13 @@ import javax.persistence.*;
 public class Perfil {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "PrfCod")
 	private int codigoPerfil;
+	
+	@Column(name = "Descripcion")
 	private String descripcion;
 	
-	@Column(name = "PrfCod")
 	public int getCodigoPerfil() {
 		return codigoPerfil;
 	}
@@ -19,7 +21,6 @@ public class Perfil {
 		this.codigoPerfil = codigoPerfil;
 	}
 	
-	@Column(name = "Descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}

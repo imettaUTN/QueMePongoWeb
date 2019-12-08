@@ -5,6 +5,7 @@ import Desarrollo.Perfil;
 public class Repositorio {
 	
 	private Perfiles perfiles;
+	private Usuarios usuarios;
 	protected EntityManager em;
 	
 	public Repositorio(EntityManager em){
@@ -18,6 +19,15 @@ public class Repositorio {
 		}
 		
 		return perfiles;
+	}
+	
+	public Usuarios usuario(){
+		
+		if(usuarios == null) {
+			usuarios = new Usuarios(em);
+		}
+		
+		return usuarios;
 	}
 	
 	public void cerrar() {

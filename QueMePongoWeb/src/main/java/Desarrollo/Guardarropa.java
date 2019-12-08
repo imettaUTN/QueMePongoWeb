@@ -2,22 +2,41 @@ package Desarrollo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import javax.persistence.*;
 import java.*;
 
 import Desarrollo.Enumerados.EnumCategoria;
 import Desarrollo.Enumerados.EnumEstadoSugerencia;
 
-
+@Entity
+@Table(name = "Guardarropas")
 public class Guardarropa {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "CodGuardarropa")
 	private int id;
+	
+	@Column(name = "Descripcion")
 	private String descripcion;
+	
+	@Column(name = "PrendasLimites")
 	private int prendasLimites;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario administrador;
+	
+	@Column(name = "PrendasLimites")
 	private boolean compartido;
+	
+	@OneToMany(mappedBy = "Prenda", cascade = CascadeType.ALL)
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
-	private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
+	
+	//@OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL)
+	//private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
 	
 	public void crearGuardarropa(String descripcion, boolean compartido, Usuario admin){
 		
@@ -70,9 +89,13 @@ public class Guardarropa {
 		if(this.prendasDisponibles.size() >0) {
 			
 		NivelDeAbrigo abrigo = new NivelDeAbrigo();	
-		int nivelDeAbrigo = abrigo.obtenerNivelAbrigo(temperatura);
+		final int nivelDeAbrigo = abrigo.obtenerNivelAbrigo(temperatura);
 		
-		List<Object> parteSuperior = this.prendasDisponibles.stream().filter(p->p.esSuperior() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
+		List<Object> parteSuperior = this.prendasDisponibles.stream().filter(new Predicate<Prenda>() {
+			public boolean test(Prenda p) {
+				return p.esSuperior() && p.nivelAbrigo() <= nivelDeAbrigo;
+			}
+		}).collect(Collectors.toList());
 		System.out.print("Cantidad de Prendas Parte Superior: " + parteSuperior.size() + "\n");
 		
 		List<Object> capaCuatro = parteSuperior.stream().filter(p->((Prenda) p).getCapa() == 4).collect(Collectors.toList());
@@ -491,10 +514,11 @@ public class Guardarropa {
 		return this.compartido;
 	}
 
+	/*
 	public List<Usuario> getUsuariosCompartiendo() {
 		return usuariosCompartiendo;
 	}
-
+	*/
 
 	public void setPrendasDisponibles(List<Prenda> prendasDisponibles) {
 		this.prendasDisponibles = prendasDisponibles;
@@ -508,9 +532,11 @@ public class Guardarropa {
 		this.compartido = guardarropasCompartido;
 	}
 
+	/*
 	public void AddUsuariosCompartiendo(Usuario usuarioCompartiendo) {
 		this.usuariosCompartiendo.add(usuarioCompartiendo);
 	}
+	*/
 	
 /*
 	public void generarSugerencias(int nivelDeAbrigo){
