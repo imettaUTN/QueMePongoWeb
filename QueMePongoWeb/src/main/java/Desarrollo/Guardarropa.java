@@ -1,5 +1,6 @@
 package Desarrollo;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -32,11 +33,13 @@ public class Guardarropa {
 	@Column(name = "PrendasLimites")
 	private boolean compartido;
 	
-	@OneToMany(mappedBy = "Prenda", cascade = CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="CodPrenda")
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 	
-	//@OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL)
-	//private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="UsrCod")
+	private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
 	
 	public void crearGuardarropa(String descripcion, boolean compartido, Usuario admin){
 		
@@ -80,8 +83,6 @@ public class Guardarropa {
 	public List<Sugerencia> sugerenciaParteSuperior(int temperatura){
 		
 		System.out.print("Ingreso a method sugerenciaParteSuperior. \n");
-		
-		
 		
 		int capaMaxima = 0;
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
@@ -330,7 +331,7 @@ public class Guardarropa {
 		}
 	}
 	
-	public List<Sugerencia> recomendacion(int Temperatura) throws IOException{
+	public List<Sugerencia> recomendacion(int Temperatura) throws IOException, SQLException{
 		
 		System.out.print("Ingreso a metodo de Recomendacion. \n");
 		int nivelDeAbrigo = 7;
@@ -373,7 +374,60 @@ public class Guardarropa {
 			}
 			
 		}	
+		
+		List<Sugerencia> sugerenciasFinales = new ArrayList<Sugerencia>();
+		ColoresExcluidos excluidos = new ColoresExcluidos();
+		
+		for(Sugerencia sugerencia:sugerencias) {
 			
+			Prenda p1 = null;
+			Prenda p2 = null;
+			
+			switch(sugerencia.getMaxCapaSuperior()) {
+			
+				case 4:
+					
+					p1 = sugerencia.getParteSuperior4();
+					break;
+					
+				case 3:
+					
+					p1 = sugerencia.getParteSuperior3();
+					break;
+					
+				case 2:
+					
+					p1 = sugerencia.getParteSuperior2();
+					break;
+					
+				case 1:
+					
+					p1 = sugerencia.getParteSuperior1();
+					break;
+			}	
+			
+			switch(sugerencia.getMaxCapaInferior()) {
+			
+				case 2:
+					
+					p2 = sugerencia.getParteInferior2(); 
+					break;
+					
+				case 1:
+					
+					p2 = sugerencia.getParteInferior1(); 
+					break;
+		}
+			
+			Usuario usuario = new Usuario();
+			usuario.setCodigoUsuario("cromero");
+			
+			if(excluidos.excluir(usuario,p1,p2)){
+				
+				sugerenciasFinales.add(sugerencia);
+			}
+				
+		}
 			return sugerencias;
 		}
 		

@@ -6,6 +6,7 @@ public class Repositorio {
 	
 	private Perfiles perfiles;
 	private Usuarios usuarios;
+	private Colores colores;
 	protected EntityManager em;
 	
 	public Repositorio(EntityManager em){
@@ -28,6 +29,15 @@ public class Repositorio {
 		}
 		
 		return usuarios;
+	}
+	
+	public Colores color(){
+		
+		if(colores == null) {
+			colores = new Colores(em);
+		}
+		
+		return colores;
 	}
 	
 	public void cerrar() {

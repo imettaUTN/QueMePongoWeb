@@ -14,4 +14,20 @@ public class Colores {
 	@Column(name = "Descripcion")
 	private String descripcion;
 
+	public int getCodColor() {
+		return codColor;
+	}
+
+	public void setCodColor(int codColor) {
+		this.codColor = codColor;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
 }

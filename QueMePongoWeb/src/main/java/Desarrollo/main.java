@@ -1,5 +1,11 @@
 package Desarrollo;
 import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Types;
+
 import Repositorio.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +20,41 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		
+		try {
+			
+			Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
+			
+			CallableStatement miSentencia = miConexion.prepareCall("{call SP_COMBINACION_EXCLUIDA(?,?,?,?)}");
+			
+			miSentencia.setString(1, "cromero");
+			miSentencia.setInt(2, 4);
+			miSentencia.setInt(3, 0);
+			miSentencia.registerOutParameter(4, Types.BIT);
+			
+			
+			miSentencia.execute();
+			
+			/*
+			while(rs.next()){
+				
+				System.out.println(rs.getString(1) + " " + rs.getString(2));
+			}
+			*/
+			
+			boolean salida = miSentencia.getBoolean(4);
+			
+			System.out.println("Salida: " + salida);
+			
+			//rs.close();
+			
+		}catch(Exception e) {
+			
+			System.out.print(e.getMessage());
+		}
+		
+		
+		
+		/*
 		Perfil perfil;
 		final String PERSISTENCE_UNIT_NAME = "DDS";
 		EntityManagerFactory emFactory;
@@ -41,6 +82,8 @@ public class main {
 		// ****** Prueba de Persistencia de Usuario ******
 		
 		
+		
+		/*
 		Perfil premium = new Perfil();
 		premium = repositorio.perfil().buscarPorId(2); 
 		System.out.println("Perfil Encontrado: \n");
@@ -56,6 +99,8 @@ public class main {
 		
 		repositorio.usuario().persistir(usuario);
 		System.out.println("Finaliza persistencia de Usuario \n");
+		
+		
 		
 		/*
 		

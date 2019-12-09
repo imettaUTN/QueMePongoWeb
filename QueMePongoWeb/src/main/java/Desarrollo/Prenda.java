@@ -10,7 +10,7 @@ public class Prenda {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "CodPrenda")
-	int id;
+	int codPrenda;
 	
 	@Column(name = "Descripcion")
 	private String descripcion;
@@ -25,6 +25,10 @@ public class Prenda {
 	@JoinColumn(name = "ColorSecundario", referencedColumnName = "ColorSecundario")
 	private Colores colorSecundario;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodGuardarropa", referencedColumnName = "CodGuardarropa")
+	private Guardarropa guardarropa;
+	
 	private TipoPrenda tipoPrenda;
 	private EnumCategoria categoria;
 	private String tela;
@@ -33,10 +37,25 @@ public class Prenda {
 	private boolean disponibleParaSugerir = true;
 	private int capa;
 	
+	public int getCodPrenda() {
+		return codPrenda;
+	}
+
+	public void setCodPrenda(int codPrenda) {
+		this.codPrenda = codPrenda;
+	}
+
+	public Guardarropa getGuardarropa() {
+		return guardarropa;
+	}
+
+	public void setGuardarropa(Guardarropa guardarropa) {
+		this.guardarropa = guardarropa;
+	}
+
 	public int nivelAbrigo() {
 		
 		return this.tipoPrenda.getNivelAbrigo();
-		
 	}
 	
 	public int getCapa(){
