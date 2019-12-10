@@ -376,7 +376,12 @@ public class Guardarropa {
 		}	
 		
 		List<Sugerencia> sugerenciasColoresExcluidos = new ArrayList<Sugerencia>();
+		sugerenciasColoresExcluidos.clear();
+		List<Sugerencia> sugerenciasFinales = new ArrayList<Sugerencia>();
+		sugerenciasFinales.clear();
 		ColoresExcluidos excluidos = new ColoresExcluidos();
+		SugerenciasExcluidas sugerExclu = new SugerenciasExcluidas();
+		
 		
 		for(Sugerencia sugerencia:sugerencias) {
 			
@@ -419,11 +424,8 @@ public class Guardarropa {
 					break;
 		}
 			
-			Usuario usuario = new Usuario();
-			usuario.setCodigoUsuario("cromero");
-			
 			//Si la combinacion de colores no esta excluida agrego a la lista.
-			if(!excluidos.ejecutar(usuario,p1,p2)){
+			if(!excluidos.ejecutar(this.administrador,p1,p2)){
 				
 				sugerenciasColoresExcluidos.add(sugerencia);
 			}
@@ -431,8 +433,19 @@ public class Guardarropa {
 		}
 			sugerencias.clear(); //Limpio lista anterior de combinaciones
 			
-			//Sugerencia Combinaciones Excluidas
-			return sugerenciasColoresExcluidos;
+			//Sugerencia de Colores Combinados Excluidos
+			
+			
+			for(Sugerencia sugerencia:sugerenciasColoresExcluidos){
+				
+				if(!sugerExclu.ejecutar(this.administrador, sugerencia)){
+					
+					sugerenciasFinales.add(sugerencia);
+				}
+				
+			}
+			
+			return sugerenciasFinales;
 		}
 		
 	/*
