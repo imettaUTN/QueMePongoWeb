@@ -7,7 +7,7 @@ import java.sql.Types;
 
 public class ColoresExcluidos {
 	
-	public boolean excluir(Usuario username,Prenda p1, Prenda p2) throws SQLException {
+	public boolean ejecutar(Usuario username,Prenda p1, Prenda p2) throws SQLException {
 		
 		boolean salida;
 		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");

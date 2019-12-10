@@ -423,7 +423,7 @@ public class Guardarropa {
 			usuario.setCodigoUsuario("cromero");
 			
 			//Si la combinacion de colores no esta excluida agrego a la lista.
-			if(!excluidos.excluir(usuario,p1,p2)){
+			if(!excluidos.ejecutar(usuario,p1,p2)){
 				
 				sugerenciasColoresExcluidos.add(sugerencia);
 			}
