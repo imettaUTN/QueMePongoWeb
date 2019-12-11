@@ -18,143 +18,64 @@ public class Prenda {
 	private LocalDate fechaDeCreacion;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ColorPrimario", referencedColumnName = "ColorPrimario")
+	@JoinColumn(name = "CodColor", referencedColumnName = "CodColor")
 	private Colores colorPrimario;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ColorSecundario", referencedColumnName = "ColorSecundario")
+	@JoinColumn(name = "CodColor", referencedColumnName = "CodColor")
 	private Colores colorSecundario;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CodGuardarropa", referencedColumnName = "CodGuardarropa")
 	private Guardarropa guardarropa;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodTipoPrenda", referencedColumnName = "CodTipoPrenda")
 	private TipoPrenda tipoPrenda;
-	private EnumCategoria categoria;
-	private String tela;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodCategoria", referencedColumnName = "CodCategoria")
+	private Categoria categoria;
+	
 	private EnumCapa numeroDeCapa;
 	private String urlImagen;
 	private boolean disponibleParaSugerir = true;
 	private int capa;
 	
-	public int getCodPrenda() {
-		return codPrenda;
-	}
-
-	public void setCodPrenda(int codPrenda) {
-		this.codPrenda = codPrenda;
-	}
-
-	public Guardarropa getGuardarropa() {
-		return guardarropa;
-	}
-
-	public void setGuardarropa(Guardarropa guardarropa) {
-		this.guardarropa = guardarropa;
-	}
-
+	
 	public int nivelAbrigo() {
 		
-		return this.tipoPrenda.getNivelAbrigo();
-	}
-	
-	public int getCapa(){
+		int abrigo = this.tipoPrenda.getNivelAbrigo().getId();
 		
-		return this.capa;
+		return abrigo; 
 	}
-	
-	public void setCapa(int capa) {
-		
-		this.capa = capa;
-	}
-	
-	
-	public void setNumeroCapa(EnumCapa capa){
-		
-		this.numeroDeCapa = capa;
-	}
-	
-	public EnumCapa getNumeroCapa(){
-		
-		return this.numeroDeCapa;
-	}
-	
 	
 	public boolean esInferior(){
 		
-		return (categoria == EnumCategoria.Inferior);
+		return (categoria.getDescripcion() == "Inferior");
 	}
 	
 	public boolean esSuperior(){
 		
-		return (categoria == EnumCategoria.Superior);
+		return (categoria.getDescripcion() == "Superior");
 	}
 	
 	public boolean esAccesorio(){
 		
-		return (categoria == EnumCategoria.Accesorio);
+		return (categoria.getDescripcion() == "Accesorios");
 	}
 	
 	public boolean esCalzado(){
 		
-		return (categoria == EnumCategoria.Calzado);
+		return (categoria.getDescripcion() == "Calzado");
 	}
 	
-	public Colores getColorPrimario() {
-		return colorPrimario;
-	}
-
-	public Colores getColorSecundario() {
-		return colorSecundario;
-	}
-
-	public TipoPrenda getTipoPrenda() {
-		return tipoPrenda;
-	}
-
-	public String getTela() {
-		return tela;
-	}
-
-	public EnumCategoria getCategoria() {
-		return categoria;
-	}
-
-	public String getUrlImagen() {
-		return urlImagen;
-	}
-
+	
 	public boolean isDisponibleParaSugerir() {
 		return disponibleParaSugerir;
 	}
 
-	public void setColorPrimario(Colores colorPrimario) {
-		this.colorPrimario = colorPrimario;
-	}
-
-	public void setColorSecundario(Colores colorSecundario) {
-		this.colorSecundario = colorSecundario;
-	}
-
-	public void setTipoPrenda(TipoPrenda tipoPrenda) {
-		this.tipoPrenda = tipoPrenda;
-	}
-
-	public void setTela(String tela) {
-		this.tela = tela;
-	}
-
-	public void setCategoria(EnumCategoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public void setUrlImagen(String urlImagen) {
-		this.urlImagen = urlImagen;
-	}
-	public void SetDisponibleParaSugerir() {
-		this.disponibleParaSugerir = true;
-	}
-
+	
 	public void BoquearPrenda() {
 		this.disponibleParaSugerir = false;
 	}
@@ -165,13 +86,98 @@ public class Prenda {
 		
 	}
 	
-	public void setDescripcion(String desc) {
-		
-		this.descripcion = desc;
-	}
-	
 	public String getDescripcion() {
 		
 		return this.descripcion;
 	}
+	
+	public int getCapa(){
+		
+		return this.tipoPrenda.getCapa();
+	}
+
+	public int getCodPrenda() {
+		return codPrenda;
+	}
+
+	public void setCodPrenda(int codPrenda) {
+		this.codPrenda = codPrenda;
+	}
+
+	public LocalDate getFechaDeCreacion() {
+		return fechaDeCreacion;
+	}
+
+	public void setFechaDeCreacion(LocalDate fechaDeCreacion) {
+		this.fechaDeCreacion = fechaDeCreacion;
+	}
+
+	public Colores getColorPrimario() {
+		return colorPrimario;
+	}
+
+	public void setColorPrimario(Colores colorPrimario) {
+		this.colorPrimario = colorPrimario;
+	}
+
+	public Colores getColorSecundario() {
+		return colorSecundario;
+	}
+
+	public void setColorSecundario(Colores colorSecundario) {
+		this.colorSecundario = colorSecundario;
+	}
+
+	public Guardarropa getGuardarropa() {
+		return guardarropa;
+	}
+
+	public void setGuardarropa(Guardarropa guardarropa) {
+		this.guardarropa = guardarropa;
+	}
+
+	public TipoPrenda getTipoPrenda() {
+		return tipoPrenda;
+	}
+
+	public void setTipoPrenda(TipoPrenda tipoPrenda) {
+		this.tipoPrenda = tipoPrenda;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public EnumCapa getNumeroDeCapa() {
+		return numeroDeCapa;
+	}
+
+	public void setNumeroDeCapa(EnumCapa numeroDeCapa) {
+		this.numeroDeCapa = numeroDeCapa;
+	}
+
+	public String getUrlImagen() {
+		return urlImagen;
+	}
+
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public void setDisponibleParaSugerir(boolean disponibleParaSugerir) {
+		this.disponibleParaSugerir = disponibleParaSugerir;
+	}
+
+	public void setCapa(int capa) {
+		this.capa = capa;
+	}
+	
 }

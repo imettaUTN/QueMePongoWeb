@@ -13,8 +13,12 @@
         <class>Desarrollo.Guardarropa</class>
         <class>Desarrollo.Prenda</class>
        	<class>Desarrollo.Colores</class>
-      
-        <properties>
+       	<class>Desarrollo.TipoPrenda</class>
+        <class>Desarrollo.TipoTela</class>
+        <class>Desarrollo.NivelDeAbrigo</class>
+        <class>Desarrollo.TipoEvento</class>
+       	
+     	<properties>
 
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;DatabaseName=QUEMEPONGO"/>

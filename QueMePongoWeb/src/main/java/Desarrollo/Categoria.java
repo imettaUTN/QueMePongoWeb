@@ -2,31 +2,27 @@ package Desarrollo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Perfil")
-public class TipoEvento {
+@Table(name = "Categoria")
+public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "CodTipoEvento")
-	private int codTipoEvento;
+	@Column(name = "PrfCod")
+	private int CodCategoria;
 	
 	@Column(name = "Descripcion")
 	private String descripcion;
-
-	public int getCodTipoEvento() {
-		return codTipoEvento;
+	
+	public int getCodCategoria() {
+		return CodCategoria;
 	}
-
-	public void setCodTipoEvento(int codTipoEvento) {
-		this.codTipoEvento = codTipoEvento;
+	public void setCodCategoria(int codCategoria) {
+		CodCategoria = codCategoria;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
 }

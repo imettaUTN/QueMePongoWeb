@@ -1,41 +1,80 @@
 package Desarrollo;
 import java.util.*;
-
+import javax.persistence.*;
 import Desarrollo.Enumerados.EnumCapa;
 
+@Entity
+@Table(name = "TipoPrenda")
 public class TipoPrenda {
 	
-	private List<String> telasValidas = new ArrayList<String>();
-	private int nivelAbrigo;
-	private String descripcion;
-	private EnumCapa capa;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "PrfCod")
+	private int id;
 	
-	public void AddTelaValida(String tela) {
-		
-		this.telasValidas.add(tela);
+	@Column(name = "Descripcion")
+	private String descripcion;
+	
+	@Column(name = "NroCapa")
+	private int capa;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodTipoTela", referencedColumnName = "CodTipoTela")
+	private TipoTela tipoTela;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodNivelAbrigo", referencedColumnName = "CodNivelAbrigo")
+	private NivelDeAbrigo nivelAbrigo;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodTipoEvento", referencedColumnName = "CodTipoEvento")
+	private TipoEvento tipoEvento;
+
+	public int getId() {
+		return id;
 	}
-	public int getNivelAbrigo() {
-		return nivelAbrigo;
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public void setNivelAbrigo(int nivelAbrigo) {
-		this.nivelAbrigo = nivelAbrigo;
-	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public boolean IsTelaValida(String tela) {
-		return this.telasValidas.contains(tela);
+	public int getCapa() {
+		return capa;
 	}
-	
-	public void agregarTelaValida(String tela){
-		
-		this.telasValidas.add(tela);
+
+	public void setCapa(int capa) {
+		this.capa = capa;
+	}
+
+	public TipoTela getTipoTela() {
+		return tipoTela;
+	}
+
+	public void setTipoTela(TipoTela tipoTela) {
+		this.tipoTela = tipoTela;
+	}
+
+	public NivelDeAbrigo getNivelAbrigo() {
+		return nivelAbrigo;
+	}
+
+	public void setNivelAbrigo(NivelDeAbrigo nivelAbrigo) {
+		this.nivelAbrigo = nivelAbrigo;
+	}
+
+	public TipoEvento getTipoEvento() {
+		return tipoEvento;
+	}
+
+	public void setTipoEvento(TipoEvento tipoEvento) {
+		this.tipoEvento = tipoEvento;
 	}
 }

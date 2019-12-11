@@ -3,30 +3,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Perfil")
-public class TipoEvento {
+public class TipoTela {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "CodTipoEvento")
-	private int codTipoEvento;
+	@Column(name = "CodTipoTela")
+	private int id;
 	
 	@Column(name = "Descripcion")
 	private String descripcion;
-
-	public int getCodTipoEvento() {
-		return codTipoEvento;
+	
+	public int getId() {
+		return id;
 	}
-
-	public void setCodTipoEvento(int codTipoEvento) {
-		this.codTipoEvento = codTipoEvento;
+	public void setId(int id) {
+		this.id = id;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
 }
