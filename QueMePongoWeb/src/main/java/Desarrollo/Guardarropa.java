@@ -80,7 +80,7 @@ public class Guardarropa {
 		return this.prendasDisponibles.size();
 	}
 	
-	public List<Sugerencia> sugerenciaParteSuperior(int temperatura){
+	public List<Sugerencia> sugerenciaParteSuperior(int temperaturaMinima, int temperaturaMaxima) throws SQLException{
 		
 		System.out.print("Ingreso a method sugerenciaParteSuperior. \n");
 		
@@ -89,8 +89,8 @@ public class Guardarropa {
 		
 		if(this.prendasDisponibles.size() >0) {
 			
-		NivelDeAbrigo abrigo = new NivelDeAbrigo();	
-		final int nivelDeAbrigo = abrigo.obtenerNivelAbrigo(temperatura);
+		NivelesDeAbrigo abrigo = new NivelesDeAbrigo();	
+		final int nivelDeAbrigo = abrigo.obtenerNivelDeAbrigo(temperaturaMinima, temperaturaMaxima);
 		
 		List<Object> parteSuperior = this.prendasDisponibles.stream().filter(new Predicate<Prenda>() {
 			public boolean test(Prenda p) {
@@ -248,11 +248,13 @@ public class Guardarropa {
 		}
 	} 
 	
-	public List<Sugerencia> sugerenciaParteInferior(int Temperatura){
+	public List<Sugerencia> sugerenciaParteInferior(int temperaturaMinima, int temperaturaMaxima) throws SQLException{
 		
 		System.out.print("Ingreso a method sugerenciaParteInferior. \n");
 		
-		int nivelDeAbrigo = 7;
+		NivelesDeAbrigo abrigo = new NivelesDeAbrigo();	
+		final int nivelDeAbrigo = abrigo.obtenerNivelDeAbrigo(temperaturaMinima, temperaturaMaxima);
+		
 		int capaMaxima = 1;
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 		
@@ -331,15 +333,15 @@ public class Guardarropa {
 		}
 	}
 	
-	public List<Sugerencia> recomendacion(int Temperatura) throws IOException, SQLException{
+	public List<Sugerencia> recomendacion(int tempMinima, int tempMaxima) throws IOException, SQLException{
 		
 		System.out.print("Ingreso a metodo de Recomendacion. \n");
 		int nivelDeAbrigo = 7;
 		
-		List<Sugerencia> sugerenciasSuperior = this.sugerenciaParteSuperior(Temperatura);
+		List<Sugerencia> sugerenciasSuperior = this.sugerenciaParteSuperior(tempMinima, tempMaxima);
 		System.out.print("Cantidad combinaciones ParteSuperior: " + sugerenciasSuperior.size() + "\n");
 		
-		List<Sugerencia> sugerenciasInferior = this.sugerenciaParteInferior(Temperatura);
+		List<Sugerencia> sugerenciasInferior = this.sugerenciaParteInferior(tempMinima, tempMaxima);
 		System.out.print("Cantidad combinaciones ParteInferior. " + sugerenciasInferior.size() +"\n");
 	
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
