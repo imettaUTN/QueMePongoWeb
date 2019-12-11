@@ -37,11 +37,11 @@ public class Prenda {
 	@JoinColumn(name = "CodCategoria", referencedColumnName = "CodCategoria")
 	private Categoria categoria;
 	
+	@Column(name = "PrendaDisponible")
+	private boolean disponible = true;
+	
 	private EnumCapa numeroDeCapa;
 	private String urlImagen;
-	private boolean disponibleParaSugerir = true;
-	private int capa;
-	
 	
 	public int nivelAbrigo() {
 		
@@ -72,12 +72,12 @@ public class Prenda {
 	
 	
 	public boolean isDisponibleParaSugerir() {
-		return disponibleParaSugerir;
+		return disponible;
 	}
 
 	
 	public void BoquearPrenda() {
-		this.disponibleParaSugerir = false;
+		this.disponible = false;
 	}
 	
 	public void visualizar(){
@@ -173,11 +173,6 @@ public class Prenda {
 	}
 
 	public void setDisponibleParaSugerir(boolean disponibleParaSugerir) {
-		this.disponibleParaSugerir = disponibleParaSugerir;
+		this.disponible = disponibleParaSugerir;
 	}
-
-	public void setCapa(int capa) {
-		this.capa = capa;
-	}
-	
 }
