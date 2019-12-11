@@ -70,13 +70,11 @@ public class Prenda {
 		return (categoria.getDescripcion() == "Calzado");
 	}
 	
-	
-	public boolean isDisponibleParaSugerir() {
-		return disponible;
-	}
-
-	
 	public void BoquearPrenda() {
+		this.disponible = false;
+	}
+	
+	public void DesbloquearPrenda() {
 		this.disponible = false;
 	}
 	
