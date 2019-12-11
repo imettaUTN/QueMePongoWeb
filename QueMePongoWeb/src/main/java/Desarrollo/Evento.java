@@ -67,7 +67,6 @@ public class Evento {
 		return fechaEvento;
 	}
 
-
 	public Sugerencia getSugerenciaSeleccionada() {
 		return sugerenciaSeleccionada;
 	}
@@ -76,12 +75,10 @@ public class Evento {
 		return estado;
 	}
 
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}

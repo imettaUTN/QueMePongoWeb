@@ -27,7 +27,7 @@ public class CommandObtenerSugerencia implements IComand {
 		*/
 		
 		
-		evento.setEstado(EnumEstadoEvento.ENPROCESO);
+		//evento.setEstado(EnumEstadoEvento.ENPROCESO);
 	}
 
 }
