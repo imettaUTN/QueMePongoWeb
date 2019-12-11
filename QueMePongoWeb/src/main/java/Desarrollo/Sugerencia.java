@@ -2,6 +2,8 @@ package Desarrollo;
 import java.util.*;
 import javax.persistence.*;
 
+import Repositorio.Repositorio;
+
 @Entity
 @Table(name = "SugerenciaExcluida")
 public class Sugerencia{
@@ -64,7 +66,13 @@ public class Sugerencia{
 		// TODO: Asignar sugerencia a Evento.
 	}
 	public void RechazarSugerencia() {
-		// TODO: Recahazar Sugerencias.
+		
+		final String PERSISTENCE_UNIT_NAME = "DDS";
+		EntityManagerFactory emFactory;
+		Repositorio repositorio;
+		emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		repositorio = new Repositorio(emFactory.createEntityManager());
+		repositorio.sugerenciaRechaza().persistir(this);
 	}
 	
 	public int getMaxCapaSuperior(){

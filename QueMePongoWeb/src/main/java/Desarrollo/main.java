@@ -30,8 +30,6 @@ public class main {
 			miSentencia.setInt(2, 4);
 			miSentencia.setInt(3, 0);
 			miSentencia.registerOutParameter(4, Types.BIT);
-			
-			
 			miSentencia.execute();
 			
 			/*
