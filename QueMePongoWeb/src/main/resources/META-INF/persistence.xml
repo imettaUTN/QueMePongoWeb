@@ -18,6 +18,7 @@
         <class>Desarrollo.NivelDeAbrigo</class>
         <class>Desarrollo.TipoEvento</class>
         <class>Desarrollo.Evento</class>
+        <class>Desarrollo.Sugerencia</class>
        	
      	<properties>
 

@@ -1,58 +1,70 @@
 package Desarrollo;
 import java.util.*;
+import javax.persistence.*;
 
-import Desarrollo.Enumerados.EnumEstadoSugerencia;
-
-public class Sugerencia {
+@Entity
+@Table(name = "SugerenciaExcluida")
+public class Sugerencia{
 	
-	private int idSugerencia;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "IdSugerencia")
+	private int IdSugerencia;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteSuperior4;
-	private Object parteSuperior3;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	private Prenda parteSuperior3;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteSuperior2;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteSuperior1;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteInferior2;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteInferior1;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteCalzado;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
 	private Prenda parteAccesorio;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
+	private Usuario usuario;
+	
 	private int maxCapaSuperior;
 	private int maxCapaInferior;
-	private EnumEstadoSugerencia estado;
+	
 	int motivoDeRechazo;
 	
 	public int getIdSugerencia() {
-		return idSugerencia;
+		return IdSugerencia;
 	}
 
 	public void setIdSugerencia(int idSugerencia) {
-		this.idSugerencia = idSugerencia;
+		IdSugerencia = idSugerencia;
 	}
 
-	public EnumEstadoSugerencia getEstado() {
-		return estado;
-	}
-
-	public void setEstado(EnumEstadoSugerencia estado) {
-		this.estado = estado;
-	}
-	public void AceptarSugerencia() {
-		this.setEstado(EnumEstadoSugerencia.ACEPTADA);
-		//TODO: Bloquear las prendas que son aceptadas por el usuario.
-		/*
-		for(Prenda p : this.getSugerencia()) {
-			p.BoquearPrenda();
-		}
-		*/
+	public void AceptarSugerencia(Sugerencia sugerencia) {
+		// TODO: Asignar sugerencia a Evento.
 	}
 	public void RechazarSugerencia() {
-		this.setEstado(EnumEstadoSugerencia.RECHAZADA);
-		
-		//TODO: Cambiar estado a prendas que fueron rechazadas.
-		
-		/*
-		for(Prenda p : this.getSugerencia()) {
-			p.SetDisponibleParaSugerir();
-		}
-		*/
+		// TODO: Recahazar Sugerencias.
 	}
 	
 	public int getMaxCapaSuperior(){
@@ -88,7 +100,7 @@ public class Sugerencia {
 	}
 
 	public void setParteSuperior3(Object prendaCapaTres) {
-		this.parteSuperior3 = prendaCapaTres;
+		this.parteSuperior3 = (Prenda) prendaCapaTres;
 	}
 
 	public Prenda getParteSuperior2() {

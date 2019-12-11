@@ -71,6 +71,7 @@ public class Usuario {
 	// Ver Tema de Rechazo.
 	public void aceptarSugerencia(Sugerencia sugerencia, Evento evento){
 		
+		/*
 		for(Sugerencia sg : evento.getSugerencias()) {
 			if(sg.getIdSugerencia() != sugerencia.getIdSugerencia()) {
 				sugerencia.RechazarSugerencia();
@@ -80,6 +81,7 @@ public class Usuario {
 				evento.setSugerenciaSeleccionada(sugerencia);
 			}
 		}
+		*/
 		
 	}
 	

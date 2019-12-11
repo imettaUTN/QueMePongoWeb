@@ -54,7 +54,6 @@ public class Guardarropa {
 	public List<Sugerencia> GenerarSugerencia(int temperaturaMinima, int temperaturaMaxima) throws IOException{
 			
 			return algortimoDeRecomendacion(temperaturaMinima,temperaturaMaxima); 
-		
 	}
 	
 	*/
