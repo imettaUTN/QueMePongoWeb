@@ -17,6 +17,7 @@
         <class>Desarrollo.TipoTela</class>
         <class>Desarrollo.NivelDeAbrigo</class>
         <class>Desarrollo.TipoEvento</class>
+        <class>Desarrollo.Evento</class>
        	
      	<properties>
 

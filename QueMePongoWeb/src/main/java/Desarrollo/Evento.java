@@ -2,32 +2,54 @@
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import Desarrollo.Enumerados.EnumEstadoEvento;
 import Desarrollo.ObjetosValor.UbicacionEvento;
 
-//@Entity
+@Entity
 @Table(name = "Evento")
 public class Evento {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "CodEvento")
 	private int codEvento;
+	
+	@Column(name = "Descripcion")
 	private String descripcion;
-	private LocalDate fechaAlta;
+	
+	@Column(name = "FechaEvento")
 	private LocalDate fechaEvento;
+	
+	@Column(name = "TempMinEvt")
 	private int temperaturaMinima;
+	
+	@Column(name = "TempMaxEvt")
 	private int temperaturaMaxima;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
+	private Usuario usuario;
+	
+	@Column(name = "Latitud")
+	private float latitud;
+	
+	@Column(name = "Longitud")
+	private float longitud;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodTipoEvento", referencedColumnName = "CodTipoEvento")
+	private TipoEvento tipoEvt;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodEstadoEvt", referencedColumnName = "CodEstadoEvt")
+	private EstadoEvento estado;
+	
 	private Sugerencia sugerenciaSeleccionada; //Debería ser XML
 	private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); //No se persiste
 	private ServidorColaDeEventos servidorCola;
-	private EnumEstadoEvento estado;
 	private InvokerGestorEvento invoker;
-	private Usuario usuario;
-	private UbicacionEvento ubicacion;
-	private TipoEvento tipoEvt;
-	
+	private LocalDate fechaAlta;
 	
 	public ServidorColaDeEventos getServidorCola() {
 		return servidorCola;
@@ -50,7 +72,7 @@ public class Evento {
 		return sugerenciaSeleccionada;
 	}
 
-	public EnumEstadoEvento getEstado() {
+	public EstadoEvento getEstado() {
 		return estado;
 	}
 
@@ -60,11 +82,6 @@ public class Evento {
 	}
 
 	
-
-	public UbicacionEvento getUbicacion() {
-		return ubicacion;
-	}
-
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
@@ -77,17 +94,13 @@ public class Evento {
 		this.sugerenciaSeleccionada = sugerencia;
 	}
 
-	public void setEstado(EnumEstadoEvento estado) {
+	public void setEstado(EstadoEvento estado) {
 		this.estado = estado;
 	}
 
 	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public void setUbicacion(UbicacionEvento ubicacion) {
-		this.ubicacion = ubicacion;
 	}
 
 	public void ProcesarEvento() throws IOException {
@@ -100,16 +113,17 @@ public class Evento {
 		return invoker;
 	}
 
-	public void nuevoEvento(LocalDate fechaEvento, Usuario usuario, UbicacionEvento ubicacion, TipoEvento tipo){
+	public void nuevoEvento(LocalDate fechaEvento, Usuario usuario, float latitud, float longitud, TipoEvento tipo, EstadoEvento estado){
 						
 			this.fechaEvento = fechaEvento;
 			this.usuario = usuario;
-			this.ubicacion = ubicacion;
 			this.tipoEvt = tipo;
 			this.fechaAlta = LocalDate.now();
+			this.latitud = latitud;
+			this.longitud = longitud;
 			this.setTemperaturaMinima(0);
 			this.setTemperaturaMaxima(0);
-			this.estado = EnumEstadoEvento.NUEVO;
+			this.estado = estado;
 	}
 
 	public int getTemperaturaMinima() {
