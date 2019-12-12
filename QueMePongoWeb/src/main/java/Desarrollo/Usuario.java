@@ -31,6 +31,14 @@ public class Usuario {
 	@Column(name = "UsrPremium")
 	private boolean userPremium;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="CodGuardarropa")
+	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="CodEvento")
+	private List<Evento> eventos = new ArrayList<Evento>();
+	
 	private LocalDate fechaAlta;
 	
 	public void guardar(){
@@ -38,14 +46,6 @@ public class Usuario {
 		JPAUtil trn = new JPAUtil();
 		trn.transaccion().usuario().persistir(this);
 	}
-	
-	/*
-	@OneToMany(mappedBy = "Guardarropa", cascade = CascadeType.ALL)
-	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();
-	
-	@OneToMany(mappedBy = "Evento", cascade = CascadeType.ALL)
-	private List<Evento> eventos = new ArrayList<Evento>();
-	*/
 	
 	/*
 	public void CargarEvento(LocalDate fecha, UbicacionEvento ubicacion, TipoEvento tipo) throws Exception{
