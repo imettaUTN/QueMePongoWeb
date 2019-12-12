@@ -33,6 +33,12 @@ public class Usuario {
 	
 	private LocalDate fechaAlta;
 	
+	public void guardar(){
+		
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().usuario().persistir(this);
+	}
+	
 	/*
 	@OneToMany(mappedBy = "Guardarropa", cascade = CascadeType.ALL)
 	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();

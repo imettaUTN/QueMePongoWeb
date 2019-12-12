@@ -67,12 +67,8 @@ public class Sugerencia{
 	}
 	public void RechazarSugerencia() {
 		
-		final String PERSISTENCE_UNIT_NAME = "DDS";
-		EntityManagerFactory emFactory;
-		Repositorio repositorio;
-		emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		repositorio = new Repositorio(emFactory.createEntityManager());
-		repositorio.sugerenciaRechaza().persistir(this);
+		JPAUtil jpa = new JPAUtil();
+		jpa.transaccion().sugerenciaRechaza().persistir(this);
 	}
 	
 	public int getMaxCapaSuperior(){

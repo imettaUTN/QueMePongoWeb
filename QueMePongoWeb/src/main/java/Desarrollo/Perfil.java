@@ -28,5 +28,11 @@ public class Perfil {
 		this.descripcion = descripcion;
 	}
 	
+	public void guardar(){
+		
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().perfil().perfil();
+	}
+	
 	
 }
