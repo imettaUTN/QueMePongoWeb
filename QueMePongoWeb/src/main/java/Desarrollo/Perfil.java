@@ -31,8 +31,6 @@ public class Perfil {
 	public void guardar(){
 		
 		JPAUtil trn = new JPAUtil();
-		trn.transaccion().perfil().perfil();
+		trn.transaccion().perfil().persistir(this);
 	}
-	
-	
 }

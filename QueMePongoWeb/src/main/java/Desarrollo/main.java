@@ -20,6 +20,23 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		
+		System.out.println("Persistir Perfil.");
+		
+		Perfil perfil = new Perfil();
+		perfil.setDescripcion("Master");
+		perfil.guardar();
+		
+		Usuario usuario = new Usuario();
+		usuario.setCodigoUsuario("Riquelme");
+		usuario.setNombre("Roman");
+		usuario.setApellido("Riquelme");
+		usuario.setPassword("123");
+		usuario.setCodPerfil(perfil);
+		usuario.guardar();
+		
+		System.out.println("Persistencia Finalizada.");
+		
+		/*
 		try {
 			
 			Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
@@ -31,6 +48,7 @@ public class main {
 			miSentencia.setInt(3, 0);
 			miSentencia.registerOutParameter(4, Types.BIT);
 			miSentencia.execute();
+		*/	
 			
 			/*
 			while(rs.next()){
@@ -38,17 +56,24 @@ public class main {
 				System.out.println(rs.getString(1) + " " + rs.getString(2));
 			}
 			*/
-			
+		
+			/*
 			boolean salida = miSentencia.getBoolean(4);
 			
 			System.out.println("Salida: " + salida);
+			*/
 			
 			//rs.close();
+			
+			/*
 			
 		}catch(Exception e) {
 			
 			System.out.print(e.getMessage());
 		}
+		
+		*/
+		
 		
 		
 		

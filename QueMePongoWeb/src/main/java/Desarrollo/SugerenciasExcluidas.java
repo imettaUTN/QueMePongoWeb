@@ -13,21 +13,23 @@ public class SugerenciasExcluidas {
 		
 		boolean salida = false;
 		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
-		CallableStatement miSentencia = cn.prepareCall("{call SP_COMBINACION_PRENDA_EXCLUIDA(?,?,?,?,?,?,?,?,?,?)}");
+		CallableStatement miSentencia = cn.prepareCall("{call SP_COMBINACION_PRENDA_EXCLUIDA(?,?,?,?,?,?,?,?,?,?,?,?)}");
 		
 		miSentencia.setString(1, usuario.getCodigoUsuario());
-		miSentencia.setInt(2, sugerencia.getParteSuperior1().getCodPrenda());
-		miSentencia.setInt(3, sugerencia.getParteSuperior2().getCodPrenda());
-		miSentencia.setInt(4, sugerencia.getParteSuperior3().getCodPrenda());
-		miSentencia.setInt(5, sugerencia.getParteSuperior4().getCodPrenda());
-		miSentencia.setInt(6, sugerencia.getParteInferior1().getCodPrenda());
-		miSentencia.setInt(7, sugerencia.getParteInferior2().getCodPrenda());
-		miSentencia.setInt(8, sugerencia.getParteCalzado().getCodPrenda());
-		miSentencia.setInt(9, sugerencia.getParteAccesorio().getCodPrenda());
-		miSentencia.registerOutParameter(10, Types.BIT);
+		miSentencia.setInt(1, sugerencia.getMaxCapaSuperior());
+		miSentencia.setInt(1, sugerencia.getMaxCapaInferior());
+		miSentencia.setInt(4, sugerencia.prendasSugeridas.get(11).getCodPrenda());
+		miSentencia.setInt(5, sugerencia.prendasSugeridas.get(12).getCodPrenda());
+		miSentencia.setInt(6, sugerencia.prendasSugeridas.get(13).getCodPrenda());
+		miSentencia.setInt(7, sugerencia.prendasSugeridas.get(14).getCodPrenda());
+		miSentencia.setInt(8, sugerencia.prendasSugeridas.get(21).getCodPrenda());
+		miSentencia.setInt(9, sugerencia.prendasSugeridas.get(22).getCodPrenda());
+		miSentencia.setInt(10, sugerencia.prendasSugeridas.get(31).getCodPrenda());
+		miSentencia.setInt(11, sugerencia.prendasSugeridas.get(41).getCodPrenda());
+		miSentencia.registerOutParameter(12, Types.BIT);
 		
 		miSentencia.execute();
-		salida = miSentencia.getBoolean(10);
+		salida = miSentencia.getBoolean(12);
 		
 		return salida;
 	}

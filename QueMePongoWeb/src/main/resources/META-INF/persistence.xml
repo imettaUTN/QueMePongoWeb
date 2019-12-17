@@ -10,6 +10,8 @@
         
         <class>Desarrollo.Perfil</class>
         <class>Desarrollo.Usuario</class>
+        
+        <!-- Esto es un comentario 
         <class>Desarrollo.Guardarropa</class>
         <class>Desarrollo.Prenda</class>
        	<class>Desarrollo.Colores</class>
@@ -19,6 +21,8 @@
         <class>Desarrollo.TipoEvento</class>
         <class>Desarrollo.Evento</class>
         <class>Desarrollo.Sugerencia</class>
+        -->
+        
        	
      	<properties>
 

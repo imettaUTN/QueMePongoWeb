@@ -9,8 +9,8 @@ public class TipoPrenda {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "PrfCod")
-	private int id;
+	@Column(name = "CodTipoPrenda")
+	private int CodTipoPrenda;
 	
 	@Column(name = "Descripcion")
 	private String descripcion;
@@ -31,11 +31,11 @@ public class TipoPrenda {
 	private TipoEvento tipoEvento;
 
 	public int getId() {
-		return id;
+		return CodTipoPrenda;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.CodTipoPrenda = id;
 	}
 
 	public String getDescripcion() {

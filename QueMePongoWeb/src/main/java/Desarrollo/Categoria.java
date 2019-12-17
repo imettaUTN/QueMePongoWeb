@@ -7,7 +7,7 @@ public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "PrfCod")
+	@Column(name = "CodCategoria")
 	private int CodCategoria;
 	
 	@Column(name = "Descripcion")

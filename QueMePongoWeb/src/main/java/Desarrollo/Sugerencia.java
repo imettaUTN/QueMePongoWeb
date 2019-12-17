@@ -14,40 +14,43 @@ public class Sugerencia{
 	private int IdSugerencia;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteSuperior4;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteSuperior3;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteSuperior2;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteSuperior1;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteInferior2;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteInferior1;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteCalzado;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPreda")
+	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
 	private Prenda parteAccesorio;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario usuario;
+	
+	// Se modifica relación
+	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
 	
 	private int maxCapaSuperior;
 	private int maxCapaInferior;
@@ -158,6 +161,5 @@ public class Sugerencia{
 	public int getMotivoDeRechazo() {
 		return motivoDeRechazo;
 	}
-	
 	
 }

@@ -33,8 +33,10 @@ public class Guardarropa {
 	@Column(name = "PrendasLimites")
 	private boolean compartido;
 	
+	/*
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="CodPrenda")
+	*/
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 	
 	@OneToMany(cascade=CascadeType.ALL)
@@ -143,11 +145,11 @@ public class Guardarropa {
 								
 								Sugerencia sugerencia = new Sugerencia();
 								
-								sugerencia.setParteSuperior4(prendaCapaCuatro);
-								sugerencia.setParteSuperior3(prendaCapaTres);
-								sugerencia.setParteSuperior2(prendaCapaDos);
-								sugerencia.setParteSuperior1(prendaCapaUno);
-								
+								sugerencia.prendasSugeridas.put(14, (Prenda) prendaCapaCuatro);
+								sugerencia.prendasSugeridas.put(13, (Prenda) prendaCapaTres);
+								sugerencia.prendasSugeridas.put(12, (Prenda) prendaCapaDos);
+								sugerencia.prendasSugeridas.put(11, (Prenda) prendaCapaUno);
+							
 								sugerencia.setMaxCapaSuperior(capaMaxima);
 								sugerencias.add(sugerencia);
 								
@@ -170,14 +172,9 @@ public class Guardarropa {
 							
 							Sugerencia sugerencia = new Sugerencia();
 							
-							sugerencia.setParteSuperior3(prendaCapaTres);
-							//System.out.print("sugerencia.getParteSuperior3 - " + sugerencia.getParteSuperior3().getDescripcion() + "\n");
-							
-							sugerencia.setParteSuperior2(prendaCapaDos);
-							//System.out.print("sugerencia.getParteSuperior2 - " + sugerencia.getParteSuperior2().getDescripcion() + "\n");
-							
-							sugerencia.setParteSuperior1(prendaCapaUno);
-							//System.out.print("sugerencia.getParteSuperior1 - " + sugerencia.getParteSuperior1().getDescripcion() + "\n");
+							sugerencia.prendasSugeridas.put(13, (Prenda) prendaCapaTres);
+							sugerencia.prendasSugeridas.put(12, (Prenda) prendaCapaDos);
+							sugerencia.prendasSugeridas.put(11, (Prenda) prendaCapaUno);
 							
 							sugerencia.setMaxCapaSuperior(capaMaxima);
 							
@@ -185,17 +182,6 @@ public class Guardarropa {
 							
 						}
 					}
-				}
-				
-				int i=1;
-				
-				for(Sugerencia sugerencia:sugerencias){
-					
-					System.out.print("Secuencia: " + i + "\n");
-					System.out.print("Capa 3: " + sugerencia.getParteSuperior3().getDescripcion() + "\n");
-					System.out.print("Capa 2: " + sugerencia.getParteSuperior2().getDescripcion() + "\n");
-					System.out.print("Capa 1: " + sugerencia.getParteSuperior1().getDescripcion() + "\n");
-					i++;
 				}
 				
 				break;
@@ -209,8 +195,8 @@ public class Guardarropa {
 					for(Object prendaCapaUno:capaUno){
 						
 						Sugerencia sugerencia = new Sugerencia();
-						sugerencia.setParteSuperior2(prendaCapaDos);
-						sugerencia.setParteSuperior1(prendaCapaUno);
+						sugerencia.prendasSugeridas.put(12, (Prenda) prendaCapaDos);
+						sugerencia.prendasSugeridas.put(11, (Prenda) prendaCapaUno);
 						sugerencia.setMaxCapaSuperior(capaMaxima);
 						sugerencias.add(sugerencia);
 						
@@ -227,7 +213,7 @@ public class Guardarropa {
 				for(Object prendaCapaUno:capaUno){
 					
 					Sugerencia sugerencia = new Sugerencia();
-					sugerencia.setParteSuperior1(prendaCapaUno);
+					sugerencia.prendasSugeridas.put(11, (Prenda) prendaCapaUno);
 					sugerencia.setMaxCapaSuperior(capaMaxima);
 					sugerencias.add(sugerencia);
 					
@@ -294,8 +280,8 @@ public class Guardarropa {
 					for(Prenda prendaCapaUno:capaUno){
 						
 						Sugerencia sugerencia = new Sugerencia();
-						sugerencia.setParteInferior2(prendaCapaDos);
-						sugerencia.setParteInferior1(prendaCapaUno);
+						sugerencia.prendasSugeridas.put(22, (Prenda) prendaCapaDos);
+						sugerencia.prendasSugeridas.put(21, (Prenda) prendaCapaUno);
 						sugerencia.setMaxCapaInferior(capaMaxima);
 						sugerencias.add(sugerencia);
 						
@@ -312,7 +298,7 @@ public class Guardarropa {
 				for(Prenda prendaCapaUno:capaUno){
 					
 					Sugerencia sugerencia = new Sugerencia();
-					sugerencia.setParteInferior1(prendaCapaUno);
+					sugerencia.prendasSugeridas.put(21, (Prenda) prendaCapaUno);
 					sugerencia.setMaxCapaInferior(capaMaxima);
 					sugerencias.add(sugerencia);
 					
@@ -358,16 +344,28 @@ public class Guardarropa {
 					for(Prenda prendaCalzado:calzados){
 						
 							Sugerencia suger = new Sugerencia();
-							suger.setParteSuperior3(sugerenciaSup.getParteSuperior3());
-							suger.setParteSuperior2(sugerenciaSup.getParteSuperior2());
-							suger.setParteSuperior1(sugerenciaSup.getParteSuperior1());
+							//suger.setParteSuperior3(sugerenciaSup.getParteSuperior3());
+							suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
+							
+							//suger.setParteSuperior2(sugerenciaSup.getParteSuperior2());
+							suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+							
+							//suger.setParteSuperior1(sugerenciaSup.getParteSuperior1());
+							suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							
 							suger.setMaxCapaSuperior(sugerenciaSup.getMaxCapaSuperior());
 							
-							suger.setParteInferior1(sugerenciaInf.getParteInferior1());
-							suger.setParteInferior2(sugerenciaInf.getParteInferior2());
+							//suger.setParteInferior1(sugerenciaInf.getParteInferior1());
+							suger.prendasSugeridas.put(21, sugerenciaSup.prendasSugeridas.get(21));
+							
+							//suger.setParteInferior2(sugerenciaInf.getParteInferior2());
+							suger.prendasSugeridas.put(22, sugerenciaSup.prendasSugeridas.get(22));
+							
 							suger.setMaxCapaInferior(sugerenciaInf.getMaxCapaInferior());
 							
-							suger.setParteCalzado(prendaCalzado);
+							suger.prendasSugeridas.put(41, prendaCalzado);
+							
+							//TODO: Falta agregar combinación de accesorios.
 							
 							suger.setMaxCapaInferior(sugerenciaInf.getMaxCapaInferior());
 							sugerencias.add(suger);
@@ -378,11 +376,12 @@ public class Guardarropa {
 		
 		List<Sugerencia> sugerenciasColoresExcluidos = new ArrayList<Sugerencia>();
 		sugerenciasColoresExcluidos.clear();
+		
 		List<Sugerencia> sugerenciasFinales = new ArrayList<Sugerencia>();
 		sugerenciasFinales.clear();
+		
 		ColoresExcluidos excluidos = new ColoresExcluidos();
 		SugerenciasExcluidas sugerExclu = new SugerenciasExcluidas();
-		
 		
 		for(Sugerencia sugerencia:sugerencias) {
 			
@@ -393,22 +392,22 @@ public class Guardarropa {
 			
 				case 4:
 					
-					p1 = sugerencia.getParteSuperior4();
+					p1 = sugerencia.prendasSugeridas.get(14);
 					break;
 					
 				case 3:
 					
-					p1 = sugerencia.getParteSuperior3();
+					p1 = sugerencia.prendasSugeridas.get(13);
 					break;
 					
 				case 2:
 					
-					p1 = sugerencia.getParteSuperior2();
+					p1 = sugerencia.prendasSugeridas.get(12);
 					break;
 					
 				case 1:
 					
-					p1 = sugerencia.getParteSuperior1();
+					p1 = sugerencia.prendasSugeridas.get(11);
 					break;
 			}	
 			
@@ -416,12 +415,12 @@ public class Guardarropa {
 			
 				case 2:
 					
-					p2 = sugerencia.getParteInferior2(); 
+					p2 = sugerencia.prendasSugeridas.get(22);
 					break;
 					
 				case 1:
 					
-					p2 = sugerencia.getParteInferior1(); 
+					p2 = sugerencia.prendasSugeridas.get(21);
 					break;
 		}
 			
