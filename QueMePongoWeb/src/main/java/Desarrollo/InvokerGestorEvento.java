@@ -2,6 +2,7 @@ package Desarrollo;
 
 import java.io.IOException;
 
+/*
 public class InvokerGestorEvento {
 private IComand comand;
 
@@ -21,3 +22,5 @@ public void ProcesarEvento(Evento evento) throws IOException {
 }
 
 }
+
+*/

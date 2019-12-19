@@ -7,7 +7,7 @@ public class ServidorColaDeEventos {
 		private Queue<Evento> colaEventosActivos;
 		private Evento cabeceraColaEventosNuevos;
 		private Evento cabeceraColaEventosActivos;
-		private InvokerGestorEvento invoker;
+		//private InvokerGestorEvento invoker;
 		
 		public ServidorColaDeEventos() {
 			this.colaEventosNuevos= new LinkedList<Evento>();
@@ -35,6 +35,8 @@ public class ServidorColaDeEventos {
 			EncolarEvento(evento, this.getColaEventosNuevos());
 			
 		}
+		
+		/*
 		public List<Sugerencia> ProcesarEventoEnCola() throws IOException {
 			//aca va la magia de procesamiento de la cola
 			// ver de usar algun framwwork que haga esto
@@ -42,7 +44,7 @@ public class ServidorColaDeEventos {
 			invoker.ProcesarEvento(eventoProcesado);
 			EncolarEvento(eventoProcesado, this.colaEventosActivos);
 			return eventoProcesado.getSugerencias();
-		}
+		}*/
 		
 		
 		public Evento getCabeceraColaEventosNuevos() {
@@ -61,6 +63,7 @@ public class ServidorColaDeEventos {
 			this.cabeceraColaEventosActivos = cabeceraColaEventosActivos;
 		}
 		
+		/*
 		public InvokerGestorEvento getInvoker() {
 			return invoker;
 		}
@@ -68,4 +71,5 @@ public class ServidorColaDeEventos {
 		public void setInvoker(InvokerGestorEvento invoker) {
 			this.invoker = invoker;
 		}
+		*/
 }

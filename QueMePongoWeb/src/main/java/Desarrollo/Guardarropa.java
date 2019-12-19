@@ -30,13 +30,10 @@ public class Guardarropa {
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario administrador;
 	
-	@Column(name = "PrendasLimites")
+	@Column(name = "Compartido")
 	private boolean compartido;
 	
-	/*
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="CodPrenda")
-	*/
+	@Transient
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 	
 	@OneToMany(cascade=CascadeType.ALL)

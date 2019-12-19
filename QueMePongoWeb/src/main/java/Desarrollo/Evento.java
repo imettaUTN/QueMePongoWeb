@@ -45,12 +45,13 @@ public class Evento {
 	@JoinColumn(name = "CodEstadoEvt", referencedColumnName = "CodEstadoEvt")
 	private EstadoEvento estado;
 	
-	private Sugerencia sugerenciaSeleccionada; //Debería ser XML
-	private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); //No se persiste
-	private ServidorColaDeEventos servidorCola;
-	private InvokerGestorEvento invoker;
-	private LocalDate fechaAlta;
+	//private Sugerencia sugerenciaSeleccionada; //Debería ser XML
+	//private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); //No se persiste
+	//private ServidorColaDeEventos servidorCola;
+	//private InvokerGestorEvento invoker;
+	//private LocalDate fechaAlta;
 	
+	/*
 	public ServidorColaDeEventos getServidorCola() {
 		return servidorCola;
 	}
@@ -58,18 +59,7 @@ public class Evento {
 	public void setServidorCola(ServidorColaDeEventos servidorCola) {
 		this.servidorCola = servidorCola;
 	}
-
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
-	}
-
-	public LocalDate getFechaEvento() {
-		return fechaEvento;
-	}
-
-	public Sugerencia getSugerenciaSeleccionada() {
-		return sugerenciaSeleccionada;
-	}
+	*/
 
 	public EstadoEvento getEstado() {
 		return estado;
@@ -79,16 +69,8 @@ public class Evento {
 		return usuario;
 	}
 
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-
 	public void setFechaEvento(LocalDate fechaEvento) {
 		this.fechaEvento = fechaEvento;
-	}
-
-	public void setSugerenciaSeleccionada(Sugerencia sugerencia) {
-		this.sugerenciaSeleccionada = sugerencia;
 	}
 
 	public void setEstado(EstadoEvento estado) {
@@ -100,6 +82,7 @@ public class Evento {
 		this.usuario = usuario;
 	}
 
+	/*
 	public void ProcesarEvento() throws IOException {
 		
 		 this.servidorCola.EncolarNuevoEvento(this);
@@ -109,13 +92,13 @@ public class Evento {
 	public InvokerGestorEvento getInvoker() {
 		return invoker;
 	}
+	*/
 
 	public void nuevoEvento(LocalDate fechaEvento, Usuario usuario, float latitud, float longitud, TipoEvento tipo, EstadoEvento estado){
 						
 			this.fechaEvento = fechaEvento;
 			this.usuario = usuario;
 			this.tipoEvt = tipo;
-			this.fechaAlta = LocalDate.now();
 			this.latitud = latitud;
 			this.longitud = longitud;
 			this.setTemperaturaMinima(0);
@@ -125,14 +108,6 @@ public class Evento {
 
 	public int getTemperaturaMinima() {
 		return temperaturaMinima;
-	}
-
-	public List<Sugerencia> getSugerencias() {
-		return sugerencias;
-	}
-
-	public void setSugerencias(List<Sugerencia> sugerencias) {
-		this.sugerencias = sugerencias;
 	}
 
 	public void setTemperaturaMinima(int temperaturaMinima) {

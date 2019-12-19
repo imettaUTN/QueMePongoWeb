@@ -15,15 +15,11 @@ public class Prenda {
 	@Column(name = "Descripcion")
 	private String descripcion;
 	
-	private LocalDate fechaDeCreacion;
+	@Column(name = "ColorPrimario")
+	private String  colorPrimario;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodColor", referencedColumnName = "CodColor")
-	private Colores colorPrimario;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodColor", referencedColumnName = "CodColor")
-	private Colores colorSecundario;
+	@Column(name = "ColorSecundario")
+	private String colorSecundario;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CodGuardarropa", referencedColumnName = "CodGuardarropa")
@@ -40,7 +36,10 @@ public class Prenda {
 	@Column(name = "PrendaDisponible")
 	private boolean disponible = true;
 	
+	@Transient
 	private EnumCapa numeroDeCapa;
+	
+	@Transient
 	private String urlImagen;
 	
 	public int nivelAbrigo() {
@@ -102,27 +101,19 @@ public class Prenda {
 		this.codPrenda = codPrenda;
 	}
 
-	public LocalDate getFechaDeCreacion() {
-		return fechaDeCreacion;
-	}
-
-	public void setFechaDeCreacion(LocalDate fechaDeCreacion) {
-		this.fechaDeCreacion = fechaDeCreacion;
-	}
-
-	public Colores getColorPrimario() {
+	public String getColorPrimario() {
 		return colorPrimario;
 	}
 
-	public void setColorPrimario(Colores colorPrimario) {
+	public void setColorPrimario(String colorPrimario) {
 		this.colorPrimario = colorPrimario;
 	}
 
-	public Colores getColorSecundario() {
+	public String getColorSecundario() {
 		return colorSecundario;
 	}
 
-	public void setColorSecundario(Colores colorSecundario) {
+	public void setColorSecundario(String colorSecundario) {
 		this.colorSecundario = colorSecundario;
 	}
 

@@ -14,10 +14,10 @@ public class ColoresExcluidos {
 		CallableStatement miSentencia = cn.prepareCall("{call SP_COMBINACION_EXCLUIDA(?,?,?,?,?,?)}");
 		
 		miSentencia.setString(1, username.getCodigoUsuario());
-		miSentencia.setInt(2, p1.getColorPrimario().getCodColor());
-		miSentencia.setInt(3, p1.getColorSecundario().getCodColor());
-		miSentencia.setInt(4, p2.getColorPrimario().getCodColor());
-		miSentencia.setInt(5, p2.getColorSecundario().getCodColor());
+		miSentencia.setString(2, p1.getColorPrimario());
+		miSentencia.setString(3, p1.getColorSecundario());
+		miSentencia.setString(4, p2.getColorPrimario());
+		miSentencia.setString(5, p2.getColorSecundario());
 		miSentencia.registerOutParameter(6, Types.BIT);
 		miSentencia.execute();
 		

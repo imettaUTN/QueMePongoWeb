@@ -5,56 +5,31 @@ import javax.persistence.*;
 import Repositorio.Repositorio;
 
 @Entity
-@Table(name = "SugerenciaExcluida")
+@Table(name = "Exclusion")
 public class Sugerencia{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "IdSugerencia")
+	@Column(name = "CodExclusion")
 	private int IdSugerencia;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteSuperior4;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteSuperior3;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteSuperior2;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteSuperior1;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteInferior2;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteInferior1;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteCalzado;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodPrenda", referencedColumnName = "CodPrenda")
-	private Prenda parteAccesorio;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario usuario;
 	
-	// Se modifica relación
+	@Transient
 	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
 	
+	@Transient
+	HashMap<Integer, Prenda> prendasRechazadas = new HashMap<Integer, Prenda>();
+	
+	@Transient
 	private int maxCapaSuperior;
+	
+	@Transient
 	private int maxCapaInferior;
 	
+	@Transient
 	int motivoDeRechazo;
 	
 	public int getIdSugerencia() {
@@ -93,71 +68,7 @@ public class Sugerencia{
 		
 		this.maxCapaInferior = capa;
 	}
-
-	public Prenda getParteSuperior4() {
-		return parteSuperior4;
-	}
-
-	public void setParteSuperior4(Object prendaCapaCuatro) {
-		this.parteSuperior4 = (Prenda) prendaCapaCuatro;
-	}
-
-	public Prenda getParteSuperior3() {
-		return (Prenda) parteSuperior3;
-	}
-
-	public void setParteSuperior3(Object prendaCapaTres) {
-		this.parteSuperior3 = (Prenda) prendaCapaTres;
-	}
-
-	public Prenda getParteSuperior2() {
-		return parteSuperior2;
-	}
-
-	public void setParteSuperior2(Object prendaCapaDos) {
-		this.parteSuperior2 = (Prenda) prendaCapaDos;
-	}
-
-	public Prenda getParteSuperior1() {
-		return parteSuperior1;
-	}
-
-	public void setParteSuperior1(Object prendaCapaUno) {
-		this.parteSuperior1 = (Prenda) prendaCapaUno;
-	}
-
-	public Prenda getParteInferior2() {
-		return parteInferior2;
-	}
-
-	public void setParteInferior2(Prenda parteInferior2) {
-		this.parteInferior2 = parteInferior2;
-	}
-
-	public Prenda getParteInferior1() {
-		return parteInferior1;
-	}
-
-	public void setParteInferior1(Prenda parteInferior1) {
-		this.parteInferior1 = parteInferior1;
-	}
-
-	public Prenda getParteCalzado() {
-		return parteCalzado;
-	}
-
-	public void setParteCalzado(Prenda parteCalzado) {
-		this.parteCalzado = parteCalzado;
-	}
-
-	public Prenda getParteAccesorio() {
-		return parteAccesorio;
-	}
-
-	public void setParteAccesorio(Prenda parteAccesorio) {
-		this.parteAccesorio = parteAccesorio;
-	}
-
+	
 	public int getMotivoDeRechazo() {
 		return motivoDeRechazo;
 	}
