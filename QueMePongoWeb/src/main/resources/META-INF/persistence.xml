@@ -10,8 +10,6 @@
         
         <class>Desarrollo.Perfil</class>
         <class>Desarrollo.Usuario</class>
-        
-        <!-- Esto es un comentario 
         <class>Desarrollo.Guardarropa</class>
         <class>Desarrollo.Prenda</class>
        	<class>Desarrollo.Colores</class>
@@ -21,10 +19,9 @@
         <class>Desarrollo.TipoEvento</class>
         <class>Desarrollo.Evento</class>
         <class>Desarrollo.Sugerencia</class>
-        -->
-        
-       	
-     	<properties>
+        <class>Desarrollo.EstadoEvento</class>
+      
+        <properties>
 
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;DatabaseName=QUEMEPONGO"/>

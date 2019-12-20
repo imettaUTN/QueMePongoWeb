@@ -2,7 +2,7 @@ package Desarrollo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Perfil")
+@Table(name = "TipoEvento")
 public class TipoEvento {
 	
 	@Id

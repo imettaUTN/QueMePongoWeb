@@ -37,13 +37,18 @@ public class Evento {
 	@Column(name = "Longitud")
 	private float longitud;
 	
+	/*
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodTipoEvento", referencedColumnName = "CodTipoEvento")
+	@JoinColumn(name = "CodTipoEvento")
 	private TipoEvento tipoEvt;
+	*/
 	
+	/*
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodEstadoEvt", referencedColumnName = "CodEstadoEvt")
+	@JoinColumn(name = "CodEstadoEvt")
 	private EstadoEvento estado;
+	*/
+	
 	
 	//private Sugerencia sugerenciaSeleccionada; //Debería ser XML
 	//private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); //No se persiste
@@ -61,9 +66,11 @@ public class Evento {
 	}
 	*/
 
+	/*
 	public EstadoEvento getEstado() {
 		return estado;
 	}
+	*/
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -73,9 +80,11 @@ public class Evento {
 		this.fechaEvento = fechaEvento;
 	}
 
+	/*
 	public void setEstado(EstadoEvento estado) {
 		this.estado = estado;
 	}
+	*/
 
 	
 	public void setUsuario(Usuario usuario) {
@@ -98,12 +107,12 @@ public class Evento {
 						
 			this.fechaEvento = fechaEvento;
 			this.usuario = usuario;
-			this.tipoEvt = tipo;
+			//this.tipoEvt = tipo;
 			this.latitud = latitud;
 			this.longitud = longitud;
 			this.setTemperaturaMinima(0);
 			this.setTemperaturaMaxima(0);
-			this.estado = estado;
+			//this.estado = estado;
 	}
 
 	public int getTemperaturaMinima() {

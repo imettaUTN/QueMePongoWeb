@@ -23,28 +23,37 @@ public class Guardarropa {
 	@Column(name = "Descripcion")
 	private String descripcion;
 	
+	@Column(name = "Compartido")
+	private boolean compartido;
+	
 	@Column(name = "PrendasLimites")
 	private int prendasLimites;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
+	//@Transient
 	private Usuario administrador;
-	
-	@Column(name = "Compartido")
-	private boolean compartido;
 	
 	@Transient
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 	
+	/*
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="UsrCod")
 	private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
+	*/
 	
 	public void crearGuardarropa(String descripcion, boolean compartido, Usuario admin){
 		
 		this.descripcion = descripcion;
 		this.compartido = compartido;
 		this.administrador = admin;
+	}
+	
+	public void guardar(){
+		
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().guardarropa().persistir(this);
 	}
 	
 
@@ -600,6 +609,46 @@ public class Guardarropa {
 		this.compartido = guardarropasCompartido;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public boolean isCompartido() {
+		return compartido;
+	}
+
+	public void setCompartido(boolean compartido) {
+		this.compartido = compartido;
+	}
+
+	public int getPrendasLimites() {
+		return prendasLimites;
+	}
+
+	public void setPrendasLimites(int prendasLimites) {
+		this.prendasLimites = prendasLimites;
+	}
+
+	public Usuario getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(Usuario administrador) {
+		this.administrador = administrador;
+	}
+
 	/*
 	public void AddUsuariosCompartiendo(Usuario usuarioCompartiendo) {
 		this.usuariosCompartiendo.add(usuarioCompartiendo);
@@ -641,5 +690,7 @@ public class Guardarropa {
 	}
 
 */	
+	
+	
 	
 }

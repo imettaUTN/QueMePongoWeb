@@ -17,4 +17,10 @@ public class Usuarios extends Repositorio{
 		em.merge(usuario);
 		em.getTransaction().commit();
 	}
+	
+	public Usuario recuperar(String id){
+		
+		JPAUtil trn = new JPAUtil();
+		return trn.transaccion().usuario().buscarPorId(id);
+	}
 }

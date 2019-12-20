@@ -47,6 +47,12 @@ public class Usuario {
 		trn.transaccion().usuario().persistir(this);
 	}
 	
+	public Usuario recuperar(String id){
+		
+		JPAUtil trn = new JPAUtil();
+		return trn.transaccion().usuario().buscarPorId(id);
+	}
+	
 	/*
 	public void CargarEvento(LocalDate fecha, UbicacionEvento ubicacion, TipoEvento tipo) throws Exception{
 		

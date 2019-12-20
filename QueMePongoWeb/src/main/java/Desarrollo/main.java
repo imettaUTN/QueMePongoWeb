@@ -20,19 +20,21 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println("Persistir Perfil.");
+		System.out.println("Persistir Guardarropa.");
 		
-		Perfil perfil = new Perfil();
-		perfil.setDescripcion("Master");
-		perfil.guardar();
+		Usuario usr = new Usuario();
+		Usuario admin = new Usuario();
+		admin = usr.recuperar("ElDiez");
 		
-		Usuario usuario = new Usuario();
-		usuario.setCodigoUsuario("Riquelme");
-		usuario.setNombre("Roman");
-		usuario.setApellido("Riquelme");
-		usuario.setPassword("123");
-		usuario.setCodPerfil(perfil);
-		usuario.guardar();
+		
+		Guardarropa guardarropa = new Guardarropa();
+		guardarropa.setDescripcion("Color Azul.");
+		guardarropa.setCompartido(false);
+		guardarropa.setPrendasLimites(150);
+		guardarropa.setAdministrador(admin);
+		
+		guardarropa.guardar();
+
 		
 		System.out.println("Persistencia Finalizada.");
 		

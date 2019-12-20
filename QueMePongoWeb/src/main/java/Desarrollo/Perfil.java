@@ -33,4 +33,10 @@ public class Perfil {
 		JPAUtil trn = new JPAUtil();
 		trn.transaccion().perfil().persistir(this);
 	}
+	
+	public Perfil recuperar(int id){
+		
+		JPAUtil trn = new JPAUtil();
+		return trn.transaccion().perfil().buscarPorId(id);
+	}
 }

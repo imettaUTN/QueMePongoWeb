@@ -8,6 +8,7 @@ public class Repositorio {
 	private Usuarios usuarios;
 	private Colores colores;
 	private SugerenciasRechazadas sugerencia;
+	private GuardarropasPersistencia guardarropa;
 	protected EntityManager em;
 	
 	public Repositorio(EntityManager em){
@@ -48,6 +49,15 @@ public class Repositorio {
 		}
 		
 		return sugerencia;
+	}
+	
+	public GuardarropasPersistencia guardarropa(){
+		
+		if(guardarropa == null) {
+			guardarropa = new GuardarropasPersistencia(em);
+		}
+		
+		return guardarropa;
 	}
 	
 	
