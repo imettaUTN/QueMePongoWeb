@@ -20,7 +20,7 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println("Persistir Prenda.");
+		System.out.println("Persistencia Iniciada.");
 		
 		JPAUtil jpa = new JPAUtil();
 		
@@ -30,34 +30,21 @@ public class main {
 		
 		System.out.println("Descripción Guardarropa:" + guardarropa.getDescripcion());
 		
-		//Tipo de Prenda
+		Usuario usr = new Usuario();
+		Perfil prf = new Perfil();
 		
-		TipoPrenda tipo = new TipoPrenda();
-	
-		tipo = jpa.transaccion().tipoPrenda().buscarPorId(3); 
+		prf = jpa.transaccion().perfil().buscarPorId(18);
 		
-		System.out.println("Descripción Tipo Prenda:" + tipo.getDescripcion());
+		System.out.println("Perfil: " + prf.getDescripcion());
 		
-		// Categoria
-		
-		Categoria cat = new Categoria();
-		cat = jpa.transaccion().categorias().buscarPorId(2);
-		
-		System.out.println("Descripción Categoria:" + cat.getDescripcion());
-		
-		// Creo la prenda
-		
-		Prenda prenda = new Prenda();
-		
-		prenda.setGuardarropa(guardarropa);
-		prenda.setDescripcion("Prenda regalada por mi Tia.");
-		prenda.setColorPrimario("Verde");
-		prenda.setColorSecundario("");
-		prenda.setTipoPrenda(tipo);
-		prenda.setCategoria(cat);
-		prenda.setDisponibleParaSugerir(true);
-		
-		prenda.guardar();
+		usr.setCodigoUsuario("RomeroCris");
+		usr.setPassword("123");
+		usr.setNombre("Ezequiel");
+		usr.setApellido("Romero");
+		usr.setUserPremium(false);
+		usr.setCodPerfil(prf);
+		usr.agregarGuardarropa(guardarropa);
+		usr.guardar();
 	
 		System.out.println("Persistencia Finalizada.");
 		

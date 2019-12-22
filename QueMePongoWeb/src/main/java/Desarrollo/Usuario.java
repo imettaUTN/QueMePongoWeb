@@ -31,8 +31,11 @@ public class Usuario {
 	@Column(name = "UsrPremium")
 	private boolean userPremium;
 	
+	//Muchos a Muchos
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="CodGuardarropa")
+	@JoinTable(name="GuardarropasUsuarios", 
+	joinColumns={@JoinColumn(name="UsrCod", referencedColumnName="UsrCod")},
+	inverseJoinColumns={@JoinColumn(name="CodGuardarropa", referencedColumnName="CodGuardarropa")})
 	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();
 	
 	@OneToMany(cascade=CascadeType.ALL)
@@ -179,23 +182,8 @@ public class Usuario {
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-
-	/*
-	public List<Guardarropa> getGuardarropas() {
-		return guardarropas;
-	}
-
-	public void setGuardarropas(List<Guardarropa> guardarropas) {
-		this.guardarropas = guardarropas;
-	}
-
-	public List<Evento> getEventos() {
-		return eventos;
-	}
-
-	public void setEventos(List<Evento> eventos) {
-		this.eventos = eventos;
-	}
-	*/
 	
+	public void agregarGuardarropa(Guardarropa guardarropa) {
+		this.guardarropas.add(guardarropa);
+	}
 }
