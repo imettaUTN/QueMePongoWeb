@@ -4,7 +4,7 @@ import javax.persistence.*;
 import Desarrollo.Enumerados.*;
 
 @Entity
-@Table(name = "Prenda")
+@Table(name = "Prendas")
 public class Prenda {
 
 	@Id

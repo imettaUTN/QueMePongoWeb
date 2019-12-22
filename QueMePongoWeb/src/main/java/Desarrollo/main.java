@@ -34,34 +34,31 @@ public class main {
 		
 		TipoPrenda tipo = new TipoPrenda();
 	
-		tipo = jpa.transaccion().tipoPrenda().buscarPorId(1); 
+		tipo = jpa.transaccion().tipoPrenda().buscarPorId(3); 
 		
 		System.out.println("Descripción Tipo Prenda:" + tipo.getDescripcion());
 		
 		// Categoria
 		
 		Categoria cat = new Categoria();
-		cat = jpa.transaccion().categorias().buscarPorId(1);
+		cat = jpa.transaccion().categorias().buscarPorId(2);
 		
 		System.out.println("Descripción Categoria:" + cat.getDescripcion());
 		
-		
 		// Creo la prenda
 		
-		/*
 		Prenda prenda = new Prenda();
 		
 		prenda.setGuardarropa(guardarropa);
-		prenda.setDescripcion("Prenda que me gusta mucho.");
-		prenda.setColorPrimario("Rojo");
-		prenda.setColorSecundario("Azul");
+		prenda.setDescripcion("Prenda regalada por mi Tia.");
+		prenda.setColorPrimario("Verde");
+		prenda.setColorSecundario("");
 		prenda.setTipoPrenda(tipo);
 		prenda.setCategoria(cat);
 		prenda.setDisponibleParaSugerir(true);
 		
 		prenda.guardar();
-		*/
-		
+	
 		System.out.println("Persistencia Finalizada.");
 		
 		/*
