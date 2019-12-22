@@ -42,6 +42,12 @@ public class Prenda {
 	@Transient
 	private String urlImagen;
 	
+	public void guardar(){
+		
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().prenda().persistir(this);
+	}
+	
 	public int nivelAbrigo() {
 		
 		int abrigo = this.tipoPrenda.getNivelAbrigo().getId();

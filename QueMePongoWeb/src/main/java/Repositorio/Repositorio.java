@@ -4,7 +4,10 @@ import Desarrollo.Perfil;
 
 public class Repositorio {
 	
+	private Categorias categorias;
+	private TipoPrendas tipoPrendas;
 	private Perfiles perfiles;
+	private Prendas prendas;
 	private Usuarios usuarios;
 	private Colores colores;
 	private SugerenciasRechazadas sugerencia;
@@ -15,6 +18,24 @@ public class Repositorio {
 		this.em = em;
 	}
 	
+	public TipoPrendas tipoPrenda(){
+		
+		if(tipoPrendas == null) {
+			tipoPrendas = new TipoPrendas(em);
+		}
+		
+		return tipoPrendas;
+	}
+	
+	public Categorias categorias(){
+		
+		if(categorias == null) {
+			categorias = new Categorias(em);
+		}
+		
+		return categorias;
+	}
+	
 	public Perfiles perfil(){
 		
 		if(perfiles == null) {
@@ -22,6 +43,15 @@ public class Repositorio {
 		}
 		
 		return perfiles;
+	}
+	
+	public Prendas prenda(){
+		
+		if(prendas == null) {
+			prendas = new Prendas(em);
+		}
+		
+		return prendas;
 	}
 	
 	public Usuarios usuario(){

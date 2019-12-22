@@ -20,21 +20,47 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println("Persistir Guardarropa.");
+		System.out.println("Persistir Prenda.");
 		
-		Usuario usr = new Usuario();
-		Usuario admin = new Usuario();
-		admin = usr.recuperar("ElDiez");
-		
+		JPAUtil jpa = new JPAUtil();
 		
 		Guardarropa guardarropa = new Guardarropa();
-		guardarropa.setDescripcion("Color Azul.");
-		guardarropa.setCompartido(false);
-		guardarropa.setPrendasLimites(150);
-		guardarropa.setAdministrador(admin);
 		
-		guardarropa.guardar();
-
+		guardarropa = jpa.transaccion().guardarropa().buscarPorId(1);
+		
+		System.out.println("Descripción Guardarropa:" + guardarropa.getDescripcion());
+		
+		//Tipo de Prenda
+		
+		TipoPrenda tipo = new TipoPrenda();
+	
+		tipo = jpa.transaccion().tipoPrenda().buscarPorId(1); 
+		
+		System.out.println("Descripción Tipo Prenda:" + tipo.getDescripcion());
+		
+		// Categoria
+		
+		Categoria cat = new Categoria();
+		cat = jpa.transaccion().categorias().buscarPorId(1);
+		
+		System.out.println("Descripción Categoria:" + cat.getDescripcion());
+		
+		
+		// Creo la prenda
+		
+		/*
+		Prenda prenda = new Prenda();
+		
+		prenda.setGuardarropa(guardarropa);
+		prenda.setDescripcion("Prenda que me gusta mucho.");
+		prenda.setColorPrimario("Rojo");
+		prenda.setColorSecundario("Azul");
+		prenda.setTipoPrenda(tipo);
+		prenda.setCategoria(cat);
+		prenda.setDisponibleParaSugerir(true);
+		
+		prenda.guardar();
+		*/
 		
 		System.out.println("Persistencia Finalizada.");
 		

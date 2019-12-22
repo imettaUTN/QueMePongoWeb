@@ -2,7 +2,7 @@ package Desarrollo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "NivelDeAbrigo")
+@Table(name = "NivelAbrigo")
 public class NivelDeAbrigo {
 	
 	@Id
@@ -15,8 +15,6 @@ public class NivelDeAbrigo {
 	
 	@Column(name = "TempMaxima")
 	private int tempMaxima;
-	
-	
 	
 	public int getId() {
 		return id;
