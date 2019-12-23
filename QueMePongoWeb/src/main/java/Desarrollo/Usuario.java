@@ -38,11 +38,8 @@ public class Usuario {
 	inverseJoinColumns={@JoinColumn(name="CodGuardarropa", referencedColumnName="CodGuardarropa")})
 	private List<Guardarropa> guardarropas = new ArrayList<Guardarropa>();
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="CodEvento")
+	@Transient
 	private List<Evento> eventos = new ArrayList<Evento>();
-	
-	private LocalDate fechaAlta;
 	
 	public void guardar(){
 		
@@ -100,13 +97,13 @@ public class Usuario {
 		
 	}
 	
-	/*
+	
 	public int cantidadDeGuardarropas() {
 			
 			return this.guardarropas.size();
 			
 	}
-	*/
+	
 	
 	/*
 	public void eliminarGuardarropa(int guardarropa, boolean compartido){
@@ -175,15 +172,10 @@ public class Usuario {
 		this.userPremium = userPremium;
 	}
 
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
-	}
-
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
 	
 	public void agregarGuardarropa(Guardarropa guardarropa) {
 		this.guardarropas.add(guardarropa);
 	}
+	
+	
 }

@@ -13,6 +13,7 @@ public class Usuarios extends Repositorio{
 	}
 	
 	public void persistir(Usuario usuario){
+		
 		em.getTransaction().begin();
 		em.merge(usuario);
 		em.getTransaction().commit();

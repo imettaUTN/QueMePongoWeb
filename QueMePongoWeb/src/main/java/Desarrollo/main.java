@@ -24,28 +24,30 @@ public class main {
 		
 		JPAUtil jpa = new JPAUtil();
 		
+		Usuario usr = new Usuario();
 		Guardarropa guardarropa = new Guardarropa();
 		
-		guardarropa = jpa.transaccion().guardarropa().buscarPorId(1);
+		usr = jpa.transaccion().usuario().buscarPorId("ElDiez");
+		guardarropa = jpa.transaccion().guardarropa().buscarPorId(3);
 		
-		System.out.println("Descripción Guardarropa:" + guardarropa.getDescripcion());
+		System.out.println("Apellido:"+usr.getApellido());
+		System.out.println("Cantidad Guardarropas:"+usr.cantidadDeGuardarropas());
 		
-		Usuario usr = new Usuario();
-		Perfil prf = new Perfil();
-		
-		prf = jpa.transaccion().perfil().buscarPorId(18);
-		
-		System.out.println("Perfil: " + prf.getDescripcion());
-		
-		usr.setCodigoUsuario("RomeroCris");
-		usr.setPassword("123");
-		usr.setNombre("Ezequiel");
-		usr.setApellido("Romero");
-		usr.setUserPremium(false);
-		usr.setCodPerfil(prf);
 		usr.agregarGuardarropa(guardarropa);
 		usr.guardar();
+		
+		System.out.println("Cantidad Guardarropas:"+usr.cantidadDeGuardarropas());
 	
+		/*
+		
+		Usuario usr = jpa.transaccion().usuario().buscarPorId("RomeroCris");
+		
+		System.out.println("Apellido:"+usr.getApellido());
+		
+		usr.setNombre("Cristian Ezequiel");
+		usr.guardar();
+		*/
+		
 		System.out.println("Persistencia Finalizada.");
 		
 		/*
@@ -86,9 +88,6 @@ public class main {
 		
 		*/
 		
-		
-		
-		
 		/*
 		Perfil perfil;
 		final String PERSISTENCE_UNIT_NAME = "DDS";
@@ -116,8 +115,6 @@ public class main {
 		
 		// ****** Prueba de Persistencia de Usuario ******
 		
-		
-		
 		/*
 		Perfil premium = new Perfil();
 		premium = repositorio.perfil().buscarPorId(2); 
@@ -134,8 +131,6 @@ public class main {
 		
 		repositorio.usuario().persistir(usuario);
 		System.out.println("Finaliza persistencia de Usuario \n");
-		
-		
 		
 		/*
 		

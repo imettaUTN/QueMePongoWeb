@@ -29,9 +29,9 @@ public class Guardarropa {
 	@Column(name = "PrendasLimites")
 	private int prendasLimites;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
-	//@Transient
+	//@ManyToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
+	@Transient
 	private Usuario administrador;
 	
 	@Transient
