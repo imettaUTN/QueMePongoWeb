@@ -12,6 +12,8 @@ public class Repositorio {
 	private Colores colores;
 	private SugerenciasRechazadas sugerencia;
 	private GuardarropasPersistencia guardarropa;
+	private EstadosEventos estados;
+	private Eventos eventos;
 	protected EntityManager em;
 	
 	public Repositorio(EntityManager em){
@@ -36,6 +38,15 @@ public class Repositorio {
 		return categorias;
 	}
 	
+	public EstadosEventos estados(){
+		
+		if(estados == null) {
+			estados = new EstadosEventos(em);
+		}
+		
+		return estados;
+	}
+	
 	public Perfiles perfil(){
 		
 		if(perfiles == null) {
@@ -43,6 +54,15 @@ public class Repositorio {
 		}
 		
 		return perfiles;
+	}
+	
+	public Eventos evento(){
+		
+		if(eventos == null) {
+			eventos = new Eventos(em);
+		}
+		
+		return eventos;
 	}
 	
 	public Prendas prenda(){

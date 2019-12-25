@@ -25,18 +25,31 @@ public class main {
 		JPAUtil jpa = new JPAUtil();
 		
 		Usuario usr = new Usuario();
+		usr = jpa.transaccion().usuario().buscarPorId("Marcelo");
+		
 		Guardarropa guardarropa = new Guardarropa();
+		Prenda p1 = new Prenda();
+		TipoPrenda tp = new TipoPrenda();
+		Categoria cat = new Categoria();
+		Evento evt = new Evento();
+		EstadoEvento estadoEvt = new EstadoEvento();
 		
-		usr = jpa.transaccion().usuario().buscarPorId("ElDiez");
-		guardarropa = jpa.transaccion().guardarropa().buscarPorId(3);
+		estadoEvt = jpa.transaccion().estados().buscarPorId(1);
 		
-		System.out.println("Apellido:"+usr.getApellido());
-		System.out.println("Cantidad Guardarropas:"+usr.cantidadDeGuardarropas());
+		System.out.println("Estado del Evento: " + estadoEvt.getDescripcion());
 		
-		usr.agregarGuardarropa(guardarropa);
-		usr.guardar();
+		evt.setDescripcion("Navidad con la Familia.");
+		evt.setearFechaEvento(2019, 12, 24);
+		evt.setEstado(estadoEvt);
+		evt.setUsuario(usr);
+		evt.setLatitud(4.2f);
+		evt.setLongitud(10.5f);
+		evt.guardar();
 		
-		System.out.println("Cantidad Guardarropas:"+usr.cantidadDeGuardarropas());
+		//usr.agregarGuardarropa(guardarropa);
+		//usr.guardar();
+		
+		//System.out.println("Cantidad Guardarropas:"+usr.cantidadDeGuardarropas());
 	
 		/*
 		

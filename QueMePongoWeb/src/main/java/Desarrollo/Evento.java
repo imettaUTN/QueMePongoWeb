@@ -19,13 +19,17 @@ public class Evento {
 	private String descripcion;
 	
 	@Column(name = "FechaEvento")
-	private LocalDate fechaEvento;
+	private LocalDate fechaEvento; //Para cuando es el evento.
 	
 	@Column(name = "TempMinEvt")
 	private int temperaturaMinima;
 	
 	@Column(name = "TempMaxEvt")
 	private int temperaturaMaxima;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "EstadoEvt", referencedColumnName = "CodEstadoEvt")
+	private EstadoEvento estado;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
@@ -37,21 +41,21 @@ public class Evento {
 	@Column(name = "Longitud")
 	private float longitud;
 	
+	@Column(name = "FrecuenciaEvt")
+	private int frecuencia;
+	
 	/*
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CodTipoEvento")
 	private TipoEvento tipoEvt;
 	*/
 	
-	/*
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodEstadoEvt")
-	private EstadoEvento estado;
-	*/
+	@Transient
+	private Sugerencia sugerenciaSeleccionada; //Debe ser XML para persistir
 	
+	@Transient
+	private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); 
 	
-	//private Sugerencia sugerenciaSeleccionada; //Debería ser XML
-	//private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); //No se persiste
 	//private ServidorColaDeEventos servidorCola;
 	//private InvokerGestorEvento invoker;
 	//private LocalDate fechaAlta;
@@ -66,12 +70,16 @@ public class Evento {
 	}
 	*/
 
-	/*
+	public void guardar() {
+		
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().evento().persistir(this);
+	}
+	
 	public EstadoEvento getEstado() {
 		return estado;
 	}
-	*/
-
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -80,12 +88,11 @@ public class Evento {
 		this.fechaEvento = fechaEvento;
 	}
 
-	/*
+	
 	public void setEstado(EstadoEvento estado) {
 		this.estado = estado;
 	}
-	*/
-
+	
 	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
@@ -130,5 +137,34 @@ public class Evento {
 	public void setTemperaturaMaxima(int temperaturaMaxima) {
 		this.temperaturaMaxima = temperaturaMaxima;
 	}
-	
+
+	public void setearFechaEvento(int anio, int mes, int dia) {
+		
+		LocalDate fecha = LocalDate.of(anio, mes, dia);
+		this.fechaEvento = fecha;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public float getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(float latitud) {
+		this.latitud = latitud;
+	}
+
+	public float getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(float longitud) {
+		this.longitud = longitud;
+	}
 }
