@@ -1,6 +1,7 @@
  package Desarrollo;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import javax.persistence.*;
 import Desarrollo.Enumerados.EnumEstadoEvento;
@@ -19,7 +20,7 @@ public class Evento {
 	private String descripcion;
 	
 	@Column(name = "FechaEvento")
-	private LocalDate fechaEvento; //Para cuando es el evento.
+	private LocalDateTime fechaEvento; //Para cuando es el evento.
 	
 	@Column(name = "TempMinEvt")
 	private int temperaturaMinima;
@@ -84,7 +85,7 @@ public class Evento {
 		return usuario;
 	}
 
-	public void setFechaEvento(LocalDate fechaEvento) {
+	public void setFechaEvento(LocalDateTime fechaEvento) {
 		this.fechaEvento = fechaEvento;
 	}
 
@@ -110,7 +111,7 @@ public class Evento {
 	}
 	*/
 
-	public void nuevoEvento(LocalDate fechaEvento, Usuario usuario, float latitud, float longitud, TipoEvento tipo, EstadoEvento estado){
+	public void nuevoEvento(LocalDateTime fechaEvento, Usuario usuario, float latitud, float longitud, TipoEvento tipo, EstadoEvento estado){
 						
 			this.fechaEvento = fechaEvento;
 			this.usuario = usuario;
@@ -138,9 +139,10 @@ public class Evento {
 		this.temperaturaMaxima = temperaturaMaxima;
 	}
 
-	public void setearFechaEvento(int anio, int mes, int dia) {
+	public void setearFechaEvento(int anio, int mes, int dia, int hora, int minutos) {
 		
-		LocalDate fecha = LocalDate.of(anio, mes, dia);
+		//LocalDate fecha = LocalDate.of(anio, mes, dia);
+		LocalDateTime fecha = LocalDateTime.of(anio, mes, dia, hora, minutos);
 		this.fechaEvento = fecha;
 	}
 

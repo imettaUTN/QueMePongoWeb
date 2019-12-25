@@ -38,8 +38,8 @@ public class main {
 		
 		System.out.println("Estado del Evento: " + estadoEvt.getDescripcion());
 		
-		evt.setDescripcion("Navidad con la Familia.");
-		evt.setearFechaEvento(2019, 12, 24);
+		evt.setDescripcion("Post Navidad con la Familia.");
+		evt.setearFechaEvento(2019, 12, 25, 22, 30);
 		evt.setEstado(estadoEvt);
 		evt.setUsuario(usr);
 		evt.setLatitud(4.2f);
