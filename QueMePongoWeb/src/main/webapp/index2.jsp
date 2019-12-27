@@ -6,35 +6,27 @@
 
 <body>
 
-<div class="container mt-4 col-lg-4">
-		
-		<div class="card col-sm-10">
-			
-			<div class="card-body text-center">
-			
-				<form class="form-sign" action="Validar" method="POST">
-				
-					<div class="form-group text-center">
-						<label>Bienvenidos a QUE ME PONGO</label>
-					</div>
-					
-					 <div class="form-group">
-						<label>Usuario:</label>
-						<input type="text" name="txtUsuario" class="form-control" placeholder="Ingrese su Usuario">
-					</div>
-					
-					 <div class="form-group">
-						<label>Contraseña:</label>
-						<input type="password" name="txtPassword" class="form-control" placeholder="Ingrese su Contraseña">
-					</div>
-					
-					<input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-b">
-				
-				</form>
-			
-			</div>
-		
+<div class="container col -lg-3">
+
+	<form action="Principal.jsp">
+	
+		<div class="form-group">
+			<p><strong> Bienvenidos a "Que Me Pongo" </strong></p>
 		</div>
+		
+		<div class="form-group">
+			<label>Usuario:</label>
+			<input class="form-control" type="text" name="txtNom" placeholder="Ingrese su Usuario">
+		</div>
+		
+		<div class="form-group">
+			<label>Email:</label>
+			<input class="form-control"  type="email" name="txtCorreo" placeholder="Ingrese su mail: example@gmail.com">
+		</div>
+		
+		<input class="btn btn-danger btn-block" type="submit" name="accion" value="Ingresar">
+	
+	</form>
 
 </div>
 

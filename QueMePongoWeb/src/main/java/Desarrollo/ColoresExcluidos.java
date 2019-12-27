@@ -21,7 +21,7 @@ public class ColoresExcluidos {
 		miSentencia.registerOutParameter(6, Types.BIT);
 		miSentencia.execute();
 		
-		salida = miSentencia.getBoolean(4);
+		salida = miSentencia.getBoolean(6);
 	
 		return salida;
 	}
