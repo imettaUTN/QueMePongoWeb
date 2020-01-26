@@ -24,27 +24,21 @@ public class main {
 		
 		JPAUtil jpa = new JPAUtil();
 		
-		Usuario usr = new Usuario();
-		usr = jpa.transaccion().usuario().buscarPorId("Marcelo");
+		Perfil perfil = new Perfil();
+		perfil = jpa.transaccion().perfil().buscarPorId(2);
 		
-		Guardarropa guardarropa = new Guardarropa();
-		Prenda p1 = new Prenda();
-		TipoPrenda tp = new TipoPrenda();
-		Categoria cat = new Categoria();
-		Evento evt = new Evento();
-		EstadoEvento estadoEvt = new EstadoEvento();
+		Usuario usuario = new Usuario();
+		usuario.setCodigoUsuario("Cristian");
+		usuario.setPassword("Cris01");
+		usuario.setNombre("Cristian Ezequiel");
+		usuario.setApellido("Romero");
+		usuario.setMail("romerocristianezequiel@gmail.com");
+		usuario.setCodPerfil(perfil);
 		
-		estadoEvt = jpa.transaccion().estados().buscarPorId(1);
+		usuario.guardar();
 		
-		System.out.println("Estado del Evento: " + estadoEvt.getDescripcion());
+		System.out.println("Persistencia Finalizada.");
 		
-		evt.setDescripcion("Post Navidad con la Familia.");
-		evt.setearFechaEvento(2019, 12, 25, 22, 30);
-		evt.setEstado(estadoEvt);
-		evt.setUsuario(usr);
-		evt.setLatitud(4.2f);
-		evt.setLongitud(10.5f);
-		evt.guardar();
 		
 		//usr.agregarGuardarropa(guardarropa);
 		//usr.guardar();

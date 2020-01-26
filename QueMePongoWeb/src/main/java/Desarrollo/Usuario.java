@@ -28,8 +28,11 @@ public class Usuario {
 	@JoinColumn(name = "PrfCod", referencedColumnName = "PrfCod")
 	private Perfil codPerfil;
 	
-	@Column(name = "UsrPremium")
-	private boolean userPremium;
+	@Column(name = "Mail")
+	private String mail;
+	
+	@Column(name = "PrendasDisponibles")
+	private int prendasDisponibles;
 	
 	//Muchos a Muchos
 	@OneToMany(cascade=CascadeType.ALL)
@@ -164,18 +167,24 @@ public class Usuario {
 		this.codPerfil = codPerfil;
 	}
 
-	public boolean isUserPremium() {
-		return userPremium;
-	}
-
-	public void setUserPremium(boolean userPremium) {
-		this.userPremium = userPremium;
-	}
-
-	
 	public void agregarGuardarropa(Guardarropa guardarropa) {
 		this.guardarropas.add(guardarropa);
 	}
-	
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getPrendasDisponibles() {
+		return prendasDisponibles;
+	}
+
+	public void setPrendasDisponibles(int prendasDisponibles) {
+		this.prendasDisponibles = prendasDisponibles;
+	}
 	
 }

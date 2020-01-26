@@ -26,9 +26,6 @@ public class Guardarropa {
 	@Column(name = "Compartido")
 	private boolean compartido;
 	
-	@Column(name = "PrendasLimites")
-	private int prendasLimites;
-	
 	//@ManyToOne(cascade = CascadeType.ALL)
 	//@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	@Transient
@@ -68,13 +65,25 @@ public class Guardarropa {
 	
 	public boolean agregarPrenda(Prenda prenda){
 		
-		if(cantidadDePrendas() <= prendasLimites) {
+		//Se compara contra usuario comun
+		if(this.administrador.getCodPerfil().getCodigoPerfil() == 2) {
+		
+			if(cantidadDePrendas() <= this.administrador.getPrendasDisponibles()) {
+				
+				prendasDisponibles.add(prenda);
+				return true;
+				
+			}else {
+				
+				return false;
+			}
+			
+		}else {
 			
 			prendasDisponibles.add(prenda);
 			return true;
-		}
+		}	
 		
-		return false;
 	}
 	
 	public void eliminarPrenda(Prenda prenda){
@@ -583,10 +592,6 @@ public class Guardarropa {
 		return prendasDisponibles;
 	}
 
-	public int getMaximoPrendas() {
-		return this.prendasLimites;
-	}
-
 	public boolean isGuardarropasCompartido() {
 		return this.compartido;
 	}
@@ -601,10 +606,7 @@ public class Guardarropa {
 		this.prendasDisponibles = prendasDisponibles;
 	}
 
-	public void setMaximoPrendas(int maximoPrendas) {
-		this.prendasLimites = maximoPrendas;
-	}
-
+	
 	public void setGuardarropasCompartido(boolean guardarropasCompartido) {
 		this.compartido = guardarropasCompartido;
 	}
@@ -633,13 +635,6 @@ public class Guardarropa {
 		this.compartido = compartido;
 	}
 
-	public int getPrendasLimites() {
-		return prendasLimites;
-	}
-
-	public void setPrendasLimites(int prendasLimites) {
-		this.prendasLimites = prendasLimites;
-	}
 
 	public Usuario getAdministrador() {
 		return administrador;
