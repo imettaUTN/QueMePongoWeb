@@ -28,11 +28,11 @@ public class main {
 		perfil = jpa.transaccion().perfil().buscarPorId(2);
 		
 		Usuario usuario = new Usuario();
-		usuario.setCodigoUsuario("Cristian");
+		usuario.setCodigoUsuario("Ezequiel");
 		usuario.setPassword("Cris01");
 		usuario.setNombre("Cristian Ezequiel");
 		usuario.setApellido("Romero");
-		usuario.setMail("romerocristianezequiel@gmail.com");
+		usuario.setMail("cristian.romero@external.fcagroup.com");
 		usuario.setCodPerfil(perfil);
 		
 		usuario.guardar();
