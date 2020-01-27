@@ -108,25 +108,40 @@ public class Usuario {
 	}
 	
 	
-	/*
 	public void eliminarGuardarropa(int guardarropa, boolean compartido){
 		
 		this.guardarropas.remove(guardarropa);
 		
 	}
-	*/
 	
-	
-	/*
-	public void crearGuardarropa(String desc, boolean compartido){
+	public boolean crearGuardarropa(String desc, boolean compartido){
 		
-		Guardarropa nuevoGuardarropa = new Guardarropa();
-		nuevoGuardarropa.crearGuardarropa(desc, compartido, this);
-		this.guardarropas.add(nuevoGuardarropa);
+		if(this.codPerfil.getCodigoPerfil() == 2){
+			
+			if(this.cantidadDeGuardarropas() <= 3) {
+		
+				Guardarropa nuevoGuardarropa = new Guardarropa();
+				nuevoGuardarropa.crearGuardarropa(desc, compartido, this);
+				this.guardarropas.add(nuevoGuardarropa);
+				return true;
+		
+			}else 
+			{
+				return false;
+			}
+		
+		}else 
+		{
+			
+			Guardarropa nuevoGuardarropa = new Guardarropa();
+			nuevoGuardarropa.crearGuardarropa(desc, compartido, this);
+			this.guardarropas.add(nuevoGuardarropa);
+			return true;
+			
+		}
 	}
-	*/
 
-	
+
 	public String getCodigoUsuario() {
 		return codigoUsuario;
 	}
@@ -185,6 +200,16 @@ public class Usuario {
 
 	public void setPrendasDisponibles(int prendasDisponibles) {
 		this.prendasDisponibles = prendasDisponibles;
+	}
+	
+	public void disminuirDisponible() {
+		
+		this.prendasDisponibles -= 1;
+	}
+	
+	public void aumentarDisponible() {
+		
+		this.prendasDisponibles += 1;
 	}
 	
 }

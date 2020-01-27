@@ -71,6 +71,7 @@ public class Guardarropa {
 			if(cantidadDePrendas() <= this.administrador.getPrendasDisponibles()) {
 				
 				prendasDisponibles.add(prenda);
+				this.administrador.disminuirDisponible();
 				return true;
 				
 			}else {
@@ -89,6 +90,10 @@ public class Guardarropa {
 	public void eliminarPrenda(Prenda prenda){
 	
 		this.prendasDisponibles.remove(prenda);
+		
+		if(this.administrador.getCodPerfil().getCodigoPerfil() == 2) {
+			this.administrador.aumentarDisponible();
+		}	
 	}
 	
 	public int cantidadDePrendas() {
