@@ -1,7 +1,8 @@
 package Repositorio;
 
-import javax.persistence.EntityManager;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 import Desarrollo.Prenda;
 
 public class Prendas extends Repositorio{
@@ -18,5 +19,13 @@ public class Prendas extends Repositorio{
 		em.getTransaction().begin();
 		em.merge(prenda);
 		em.getTransaction().commit();
+	}
+	
+	public List<Prenda> listado(){
+		
+		List<Prenda> prendas = new ArrayList<>();
+		Query query = em.createQuery("SELECT P FROM Prenda P");
+		prendas = query.getResultList();
+		return prendas;
 	}
 }

@@ -63,6 +63,7 @@ public class Guardarropa {
 	
 	*/
 	
+	/*
 	public boolean agregarPrenda(Prenda prenda){
 		
 		//Se compara contra usuario comun
@@ -86,6 +87,7 @@ public class Guardarropa {
 		}	
 		
 	}
+	*/
 	
 	public void eliminarPrenda(Prenda prenda){
 	

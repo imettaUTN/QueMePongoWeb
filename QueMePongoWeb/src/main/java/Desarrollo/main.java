@@ -23,19 +23,43 @@ public class main {
 		System.out.println("Persistencia Iniciada.");
 		
 		JPAUtil jpa = new JPAUtil();
-		
-		Perfil perfil = new Perfil();
-		perfil = jpa.transaccion().perfil().buscarPorId(2);
-		
 		Usuario usuario = new Usuario();
-		usuario.setCodigoUsuario("Ezequiel");
-		usuario.setPassword("Cris01");
-		usuario.setNombre("Cristian Ezequiel");
-		usuario.setApellido("Romero");
-		usuario.setMail("cristian.romero@external.fcagroup.com");
-		usuario.setCodPerfil(perfil);
 		
+		usuario = jpa.transaccion().usuario().buscarPorId("Ezequiel");
+		
+		TipoPrenda tipo = new TipoPrenda(); //Remera
+		tipo = jpa.transaccion().tipoPrenda().buscarPorId(3);
+		
+		Categoria categoria = new Categoria(); //Parte Superior
+		categoria = jpa.transaccion().categorias().buscarPorId(1);
+		
+
+		Prenda prenda = new Prenda();
+		prenda.setDescripcion("Remera para Smith");
+		prenda.setColorPrimario("Azul");
+		prenda.setColorSecundario("Cocodrilo Verde");
+		prenda.setTipoPrenda(tipo);
+		prenda.setCategoria(categoria);
+		
+		usuario.agregarPrendaAGuardarropa(prenda, 0);
 		usuario.guardar();
+		
+		/*
+		
+		guardarropa = usuario.obtenerGuardarropa(0);
+		System.out.println("Desc Guardarropa:" + guardarropa.getDescripcion());
+		
+		prenda.setGuardarropa(guardarropa);
+		prenda.setDescripcion("Camiseta Suplente Nueva");
+		prenda.setColorPrimario("Violeta");
+		prenda.setColorSecundario("Blanco");
+		prenda.setTipoPrenda(tipo);
+		prenda.setCategoria(categoria);
+		prenda.guardar();
+		
+		*/
+		
+		//System.out.println("Cantidad Prendas:" + usuario.obtenerGuardarropa(0).cantidadDePrendas());
 		
 		System.out.println("Persistencia Finalizada.");
 		
@@ -54,8 +78,6 @@ public class main {
 		usr.setNombre("Cristian Ezequiel");
 		usr.guardar();
 		*/
-		
-		System.out.println("Persistencia Finalizada.");
 		
 		/*
 		try {

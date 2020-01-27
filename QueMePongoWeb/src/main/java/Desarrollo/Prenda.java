@@ -44,8 +44,8 @@ public class Prenda {
 	
 	public void guardar(){
 		
-		JPAUtil trn = new JPAUtil();
-		trn.transaccion().prenda().persistir(this);
+			JPAUtil trn = new JPAUtil();
+			trn.transaccion().prenda().persistir(this);
 	}
 	
 	public int nivelAbrigo() {

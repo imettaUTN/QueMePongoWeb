@@ -67,21 +67,43 @@ public class Usuario {
 	*/
 	
 	// Nota: Valor false porque supera el limite disponible.
-	/*
-	public boolean agregarPrendaAGuardarropa(Prenda prenda, int guardarropa){
+	
+	public boolean agregarPrendaAGuardarropa(Prenda prenda, int index){
 		
-		return this.getGuardarropas().get(guardarropa).agregarPrenda(prenda);
+		Guardarropa guardarropa = new Guardarropa();
+		
+		guardarropa = this.obtenerGuardarropa(index);
+		
+		if(this.codPerfil.getCodigoPerfil() == 2){
+			
+			if(this.prendasDisponibles <= 60) {
+				
+				prenda.setGuardarropa(guardarropa);
+				this.disminuirDisponible();
+				prenda.guardar();
+				return true;
+				
+			}else 
+			{
+				return false;
+			}
+			
+		}else
+		{
+			prenda.setGuardarropa(guardarropa);
+			prenda.guardar();
+			return true;
+		}	
 		
 	}
-	*/
 	
-	/*
+	
 	public void eliminarPrenda(Prenda prenda, int guardarropa){
 		
 		this.getGuardarropas().get(guardarropa).eliminarPrenda(prenda);
 		
 	}
-	*/
+	
 	
 	// Ver Tema de Rechazo.
 	public void aceptarSugerencia(Sugerencia sugerencia, Evento evento){
@@ -211,5 +233,20 @@ public class Usuario {
 		
 		this.prendasDisponibles += 1;
 	}
+
+	public List<Guardarropa> getGuardarropas() {
+		return guardarropas;
+	}
+
+	public void setGuardarropas(List<Guardarropa> guardarropas) {
+		this.guardarropas = guardarropas;
+	}
+	
+	public Guardarropa obtenerGuardarropa(int index) {
+		
+		return this.getGuardarropas().get(index);
+	}
+	
+	
 	
 }
