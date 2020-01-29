@@ -25,25 +25,37 @@ public class main {
 		JPAUtil jpa = new JPAUtil();
 		Usuario usuario = new Usuario();
 		
-		usuario = jpa.transaccion().usuario().buscarPorId("Ezequiel");
+		usuario = jpa.transaccion().usuario().buscarPorId("Cristian");
 		
+		/*
 		TipoPrenda tipo = new TipoPrenda(); //Remera
 		tipo = jpa.transaccion().tipoPrenda().buscarPorId(3);
 		
 		Categoria categoria = new Categoria(); //Parte Superior
 		categoria = jpa.transaccion().categorias().buscarPorId(1);
+		*/
+		
+		System.out.println("Cantidad de Guardarropas:"+usuario.cantidadDeGuardarropas());
+		
+		Guardarropa g = new Guardarropa();
+		List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
+		prendasDisponibles = jpa.transaccion().prenda().listado(11);
+		
+		g = usuario.obtenerGuardarropa(0);
+		g.setPrendasDisponibles(prendasDisponibles);
+	
+		
+		System.out.println("Cantidad de Prendas:"+g.cantidadDePrendas());
+		
+		for(Prenda p:prendasDisponibles) {
+			
+			System.out.println("Prendas: " + p.getDescripcion());
+		}
+		
+		
+		
 		
 
-		Prenda prenda = new Prenda();
-		prenda.setDescripcion("Remera para Smith");
-		prenda.setColorPrimario("Azul");
-		prenda.setColorSecundario("Cocodrilo Verde");
-		prenda.setTipoPrenda(tipo);
-		prenda.setCategoria(categoria);
-		
-		usuario.agregarPrendaAGuardarropa(prenda, 0);
-		usuario.guardar();
-		
 		/*
 		
 		guardarropa = usuario.obtenerGuardarropa(0);

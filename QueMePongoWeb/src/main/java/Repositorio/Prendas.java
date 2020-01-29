@@ -21,10 +21,10 @@ public class Prendas extends Repositorio{
 		em.getTransaction().commit();
 	}
 	
-	public List<Prenda> listado(){
+	public List<Prenda> listado(int codGuardarropa){
 		
 		List<Prenda> prendas = new ArrayList<>();
-		Query query = em.createQuery("SELECT P FROM Prenda P");
+		Query query = em.createQuery("SELECT P FROM Prenda P WHERE P.guardarropa="+codGuardarropa);
 		prendas = query.getResultList();
 		return prendas;
 	}
