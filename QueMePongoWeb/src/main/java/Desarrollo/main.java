@@ -29,6 +29,7 @@ public class main {
 		
 		usuario = jpa.transaccion().usuario().buscarPorId("Ezequiel");
 		guardarropa = usuario.obtenerGuardarropa(0);
+		guardarropa.setAdministrador(usuario);
 		
 		guardarropa.setPrendasDisponibles(jpa.transaccion().prenda().listado(guardarropa.getId()));
 		

@@ -449,14 +449,16 @@ public class Guardarropa {
 					break;
 		}
 			
-			/*
+			System.out.println("Administrador:"+this.administrador.getCodigoUsuario());
+			System.out.println("Prenda 1:"+p1.getCodPrenda());
+			System.out.println("Prenda 2:"+p2.getCodPrenda());
+			
 			//Si la combinacion de colores no esta excluida agrego a la lista.
 			if(!excluidos.ejecutar(this.administrador,p1,p2)){
 				
 				sugerenciasColoresExcluidos.add(sugerencia);
 			}
-			*/
-							
+			
 		}
 			
 			//sugerencias.clear(); //Limpio lista anterior de combinaciones
@@ -475,7 +477,7 @@ public class Guardarropa {
 			
 			return sugerenciasFinales;
 			*/
-			return sugerencias;
+			return sugerenciasColoresExcluidos;
 		}
 		
 	/*

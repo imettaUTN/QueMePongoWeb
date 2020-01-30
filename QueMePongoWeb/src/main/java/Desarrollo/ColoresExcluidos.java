@@ -11,7 +11,7 @@ public class ColoresExcluidos {
 		
 		boolean salida;
 		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
-		CallableStatement miSentencia = cn.prepareCall("{call SP_COMBINACION_EXCLUIDA(?,?,?,?,?,?)}");
+		CallableStatement miSentencia = cn.prepareCall("{call SP_COMBINACION_COLORES_EXCLUIDA(?,?,?,?,?,?)}");
 		
 		miSentencia.setString(1, username.getCodigoUsuario());
 		miSentencia.setString(2, p1.getColorPrimario());
