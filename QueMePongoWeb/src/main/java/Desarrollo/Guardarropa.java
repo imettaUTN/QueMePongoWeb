@@ -105,21 +105,26 @@ public class Guardarropa {
 	
 	public List<Sugerencia> sugerenciaParteSuperior(int temperaturaMinima, int temperaturaMaxima) throws SQLException{
 		
-		System.out.print("Ingreso a method sugerenciaParteSuperior. \n");
+		System.out.print("Sugerencia Parte Superior. \n");
 		
 		int capaMaxima = 0;
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 		
 		if(this.prendasDisponibles.size() >0) {
 			
+			System.out.println("Hay Prendas Disponibles.");
+			
 		NivelesDeAbrigo abrigo = new NivelesDeAbrigo();	
 		final int nivelDeAbrigo = abrigo.obtenerNivelDeAbrigo(temperaturaMinima, temperaturaMaxima);
 		
+			System.out.println("El Nivel de Abrigo es:" + nivelDeAbrigo);
+		
 		List<Object> parteSuperior = this.prendasDisponibles.stream().filter(new Predicate<Prenda>() {
 			public boolean test(Prenda p) {
-				return p.esSuperior() && p.nivelAbrigo() <= nivelDeAbrigo;
+				return p.esSuperior() && p.nivelAbrigo() >= nivelDeAbrigo;
 			}
 		}).collect(Collectors.toList());
+		
 		System.out.print("Cantidad de Prendas Parte Superior: " + parteSuperior.size() + "\n");
 		
 		List<Object> capaCuatro = parteSuperior.stream().filter(p->((Prenda) p).getCapa() == 4).collect(Collectors.toList());
@@ -244,6 +249,7 @@ public class Guardarropa {
 				break;
 		}
 		
+			
 			return sugerencias;
 		
 		}else {
@@ -262,12 +268,12 @@ public class Guardarropa {
 		NivelesDeAbrigo abrigo = new NivelesDeAbrigo();	
 		final int nivelDeAbrigo = abrigo.obtenerNivelDeAbrigo(temperaturaMinima, temperaturaMaxima);
 		
-		int capaMaxima = 1;
+		int capaMaxima = 0;
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 		
 		if(this.prendasDisponibles.size() >0 ) {
 		
-		List<Prenda> parteInferior = this.prendasDisponibles.stream().filter(p->p.esInferior() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
+		List<Prenda> parteInferior = this.prendasDisponibles.stream().filter(p->p.esInferior() && p.nivelAbrigo() >= nivelDeAbrigo).collect(Collectors.toList());
 		
 		List<Prenda> capaDos = parteInferior.stream().filter(p->p.getCapa() == 2).collect(Collectors.toList());
 		List<Prenda> capaUno = parteInferior.stream().filter(p->p.getCapa() == 1).collect(Collectors.toList());
@@ -284,9 +290,9 @@ public class Guardarropa {
 				
 			}
 			
-			if(prenda.getCapa() == 4){
+			if(prenda.getCapa() == 2){
 				
-				capaMaxima = 4;
+				capaMaxima = 2;
 				break;
 			}
 		}
@@ -342,8 +348,8 @@ public class Guardarropa {
 	
 	public List<Sugerencia> recomendacion(int tempMinima, int tempMaxima) throws IOException, SQLException{
 		
-		System.out.print("Ingreso a metodo de Recomendacion. \n");
-		int nivelDeAbrigo = 7;
+		System.out.print("Recomendacion. \n");
+		int nivelDeAbrigo = 2; //Ver
 		
 		List<Sugerencia> sugerenciasSuperior = this.sugerenciaParteSuperior(tempMinima, tempMaxima);
 		System.out.print("Cantidad combinaciones ParteSuperior: " + sugerenciasSuperior.size() + "\n");
@@ -354,8 +360,8 @@ public class Guardarropa {
 		List<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 		//List<Prenda> parteSuperior = (List<Prenda>) this.prendasDisponibles.stream().filter(p->p.esSuperior() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
 		//List<Prenda> parteInferior = (List<Prenda>) this.prendasDisponibles.stream().filter(p->p.esInferior() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
-		List<Prenda> calzados = (List<Prenda>) this.prendasDisponibles.stream().filter(p->p.esCalzado() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
-		List<Prenda> accesorios = (List<Prenda>) this.prendasDisponibles.stream().filter(p->p.esAccesorio() && p.nivelAbrigo() <= nivelDeAbrigo).collect(Collectors.toList());
+		List<Prenda> calzados = (List<Prenda>) this.prendasDisponibles.stream().filter(p->p.esCalzado() && p.nivelAbrigo() >= 2).collect(Collectors.toList());
+		//List<Prenda> accesorios = (List<Prenda>) this.prendasDisponibles.stream().filter(p->p.esAccesorio() && p.nivelAbrigo() >= nivelDeAbrigo).collect(Collectors.toList());
 		
 		System.out.print("Cantidad de Calzados. " + calzados.size() +"\n");
 		
@@ -378,18 +384,15 @@ public class Guardarropa {
 							suger.setMaxCapaSuperior(sugerenciaSup.getMaxCapaSuperior());
 							
 							//suger.setParteInferior1(sugerenciaInf.getParteInferior1());
-							suger.prendasSugeridas.put(21, sugerenciaSup.prendasSugeridas.get(21));
+							suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
 							
 							//suger.setParteInferior2(sugerenciaInf.getParteInferior2());
-							suger.prendasSugeridas.put(22, sugerenciaSup.prendasSugeridas.get(22));
+							suger.prendasSugeridas.put(22, sugerenciaInf.prendasSugeridas.get(22));
 							
 							suger.setMaxCapaInferior(sugerenciaInf.getMaxCapaInferior());
 							
-							suger.prendasSugeridas.put(41, prendaCalzado);
+							suger.prendasSugeridas.put(31, prendaCalzado);
 							
-							//TODO: Falta agregar combinación de accesorios.
-							
-							suger.setMaxCapaInferior(sugerenciaInf.getMaxCapaInferior());
 							sugerencias.add(suger);
 					}
 			}
@@ -446,18 +449,21 @@ public class Guardarropa {
 					break;
 		}
 			
+			/*
 			//Si la combinacion de colores no esta excluida agrego a la lista.
 			if(!excluidos.ejecutar(this.administrador,p1,p2)){
 				
 				sugerenciasColoresExcluidos.add(sugerencia);
 			}
-				
+			*/
+							
 		}
-			sugerencias.clear(); //Limpio lista anterior de combinaciones
+			
+			//sugerencias.clear(); //Limpio lista anterior de combinaciones
 			
 			//Sugerencia de Colores Combinados Excluidos
 			
-			
+			/*
 			for(Sugerencia sugerencia:sugerenciasColoresExcluidos){
 				
 				if(!sugerExclu.ejecutar(this.administrador, sugerencia)){
@@ -468,6 +474,8 @@ public class Guardarropa {
 			}
 			
 			return sugerenciasFinales;
+			*/
+			return sugerencias;
 		}
 		
 	/*

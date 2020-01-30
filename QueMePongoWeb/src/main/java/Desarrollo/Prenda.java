@@ -57,22 +57,22 @@ public class Prenda {
 	
 	public boolean esInferior(){
 		
-		return (categoria.getDescripcion() == "Inferior");
+		return (categoria.getCodCategoria() == 2);
 	}
 	
 	public boolean esSuperior(){
 		
-		return (categoria.getDescripcion() == "Superior");
+		return (categoria.getCodCategoria() == 1);
 	}
 	
 	public boolean esAccesorio(){
 		
-		return (categoria.getDescripcion() == "Accesorios");
+		return (categoria.getCodCategoria() == 4);
 	}
 	
 	public boolean esCalzado(){
 		
-		return (categoria.getDescripcion() == "Calzado");
+		return (categoria.getCodCategoria() == 3);
 	}
 	
 	public void BoquearPrenda() {
