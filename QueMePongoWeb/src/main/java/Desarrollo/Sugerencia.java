@@ -1,7 +1,6 @@
 package Desarrollo;
 import java.util.*;
 import javax.persistence.*;
-
 import Repositorio.Repositorio;
 
 @Entity
@@ -17,11 +16,14 @@ public class Sugerencia{
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario usuario;
 	
-	@Transient
-	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="PrendaExclusion", 
+	joinColumns={@JoinColumn(name="CodExclusion", referencedColumnName="CodExclusion")},
+	inverseJoinColumns={@JoinColumn(name="CodPrenda", referencedColumnName="CodPrenda")})
+	private List<Prenda> exclusiones;
 	
 	@Transient
-	HashMap<Integer, Prenda> prendasRechazadas = new HashMap<Integer, Prenda>();
+	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
 	
 	@Transient
 	private int maxCapaSuperior;
@@ -41,7 +43,7 @@ public class Sugerencia{
 	}
 
 	public void AceptarSugerencia(Sugerencia sugerencia) {
-		// TODO: Asignar sugerencia a Evento.
+		// TODO: Asignar sugerencia a Evento en formato XML.
 	}
 	public void RechazarSugerencia() {
 		
@@ -73,4 +75,72 @@ public class Sugerencia{
 		return motivoDeRechazo;
 	}
 	
+	public void cargarExclusiones() {
+		
+		Prenda p = new Prenda();
+		p=null;
+		
+		p = this.prendasSugeridas.get(11);
+		
+		if(p != null) {
+		
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(12);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(13);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(14);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(21);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(21);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(31);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+			p=null;
+		}
+		
+		p = this.prendasSugeridas.get(41);
+		
+		if(p != null) {
+			
+			this.exclusiones.add(p);
+		}
+	}
 }
