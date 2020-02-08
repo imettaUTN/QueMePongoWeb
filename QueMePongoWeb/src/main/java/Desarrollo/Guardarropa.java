@@ -350,6 +350,8 @@ public class Guardarropa {
 		
 		System.out.print("Recomendacion. \n");
 		int nivelDeAbrigo = 2; //Ver
+		int cantidadMaximaSugerencias=5;
+		int sugerenciasSeleccionadas=0;
 		
 		List<Sugerencia> sugerenciasSuperior = this.sugerenciaParteSuperior(tempMinima, tempMaxima);
 		System.out.print("Cantidad combinaciones ParteSuperior: " + sugerenciasSuperior.size() + "\n");
@@ -456,7 +458,15 @@ public class Guardarropa {
 			//Si la combinacion de colores no esta excluida agrego a la lista.
 			if(!excluidos.ejecutar(this.administrador,p1,p2)){
 				
-				sugerenciasColoresExcluidos.add(sugerencia);
+					if(sugerenciasSeleccionadas <= cantidadMaximaSugerencias) {
+				
+						sugerenciasColoresExcluidos.add(sugerencia);
+						sugerenciasSeleccionadas++;
+						
+					}else 
+					{
+						return sugerenciasColoresExcluidos; // Sale por 5 sugerencias
+					}
 			}
 			
 		}
@@ -477,7 +487,7 @@ public class Guardarropa {
 			
 			return sugerenciasFinales;
 			*/
-			return sugerenciasColoresExcluidos;
+			return sugerenciasColoresExcluidos; //Sale por menos de 5 sugerencias
 		}
 		
 	/*

@@ -36,6 +36,9 @@ public class Prenda {
 	@Column(name = "PrendaDisponible")
 	private boolean disponible = true;
 	
+	@Column(name = "CambioNivel")
+	private int CambioNivel; 
+	
 	@Transient
 	private EnumCapa numeroDeCapa;
 	
@@ -50,9 +53,17 @@ public class Prenda {
 	
 	public int nivelAbrigo() {
 		
+		// Nota: Si el cambio de nivel es distinto de cero implica que el usuario
+		// modifico el valor por default asignado a la prenda.
+		
 		int abrigo = this.tipoPrenda.getNivelAbrigo().getId();
 		
-		return abrigo; 
+			if(this.CambioNivel != 0) {
+		
+				abrigo += this.CambioNivel;
+			}
+		
+			return abrigo; 
 	}
 	
 	public boolean esInferior(){
@@ -170,4 +181,13 @@ public class Prenda {
 	public void setDisponibleParaSugerir(boolean disponibleParaSugerir) {
 		this.disponible = disponibleParaSugerir;
 	}
+
+	public int getCambioNivel() {
+		return CambioNivel;
+	}
+
+	public void setCambioNivel(int cambioNivel) {
+		CambioNivel = cambioNivel;
+	}
+	
 }
