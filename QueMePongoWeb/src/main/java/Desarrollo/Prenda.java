@@ -36,8 +36,8 @@ public class Prenda {
 	@Column(name = "PrendaDisponible")
 	private boolean disponible = true;
 	
-	@Column(name = "CambioNivel")
-	private int CambioNivel; 
+	@Column(name = "CCNivelAbrigo")
+	private int ccNivelDeAbrigo; //Coeficiente Cambio Nivel de Abrigo
 	
 	@Transient
 	private EnumCapa numeroDeCapa;
@@ -58,9 +58,9 @@ public class Prenda {
 		
 		int abrigo = this.tipoPrenda.getNivelAbrigo().getId();
 		
-			if(this.CambioNivel != 0) {
+			if(this.ccNivelDeAbrigo != 0) {
 		
-				abrigo += this.CambioNivel;
+				abrigo += this.ccNivelDeAbrigo;
 			}
 		
 			return abrigo; 
@@ -183,11 +183,11 @@ public class Prenda {
 	}
 
 	public int getCambioNivel() {
-		return CambioNivel;
+		return ccNivelDeAbrigo;
 	}
 
 	public void setCambioNivel(int cambioNivel) {
-		CambioNivel = cambioNivel;
+		ccNivelDeAbrigo = cambioNivel;
 	}
 	
 }
