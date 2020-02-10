@@ -79,9 +79,12 @@ public class Sugerencia{
 	
 	public void cargarExclusiones() {
 		
+		System.out.println("Ingreso a cargarExclusiones.");
+		
 		for(Integer key:this.prendasSugeridas.keySet()) {
 			
-			this.exclusiones.add(this.prendasSugeridas.get(key));
+			System.out.println("KEY:"+key);
+			//this.exclusiones.add(this.prendasSugeridas.get(key));
 			
 		}
 	}

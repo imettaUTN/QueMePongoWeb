@@ -375,22 +375,43 @@ public class Guardarropa {
 					for(Prenda prendaCalzado:calzados){
 						
 							Sugerencia suger = new Sugerencia();
-							//suger.setParteSuperior3(sugerenciaSup.getParteSuperior3());
-							suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
 							
-							//suger.setParteSuperior2(sugerenciaSup.getParteSuperior2());
-							suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+							// ********************** Categoria Superior **************************** //
 							
-							//suger.setParteSuperior1(sugerenciaSup.getParteSuperior1());
-							suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							if(sugerenciaSup.getMaxCapaSuperior() == 3) {
+							
+								suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
+								suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+								suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}	
+							
+							if(sugerenciaSup.getMaxCapaSuperior() == 2) {
+							
+									suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+									suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}		
+							
+							if(sugerenciaSup.getMaxCapaSuperior() == 1) {
+								
+									suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}
 							
 							suger.setMaxCapaSuperior(sugerenciaSup.getMaxCapaSuperior());
 							
-							//suger.setParteInferior1(sugerenciaInf.getParteInferior1());
-							suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
 							
-							//suger.setParteInferior2(sugerenciaInf.getParteInferior2());
-							suger.prendasSugeridas.put(22, sugerenciaInf.prendasSugeridas.get(22));
+							
+							// ********************** Categoria Inferior **************************** //
+							
+							if(sugerenciaInf.getMaxCapaInferior() == 2) {
+							
+								suger.prendasSugeridas.put(22, sugerenciaInf.prendasSugeridas.get(22));
+								suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
+							}
+							
+							if(sugerenciaInf.getMaxCapaInferior() == 1) {
+								
+								suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
+							}
 							
 							suger.setMaxCapaInferior(sugerenciaInf.getMaxCapaInferior());
 							

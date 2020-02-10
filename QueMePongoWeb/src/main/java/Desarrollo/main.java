@@ -69,6 +69,7 @@ public class main {
 			
 			if(sugerencia.getMaxCapaSuperior() == 2) {
 				
+				//System.out.println("Parte Superior Capa 3 B:" + sugerencia.prendasSugeridas.get(13).getCodPrenda());
 				System.out.println("Parte Superior Capa 2:" + sugerencia.prendasSugeridas.get(12).getCodPrenda());
 				System.out.println("Parte Superior Capa 1:" + sugerencia.prendasSugeridas.get(11).getCodPrenda());
 			}
@@ -91,13 +92,14 @@ public class main {
 			
 				System.out.println("Calzado:" + sugerencia.prendasSugeridas.get(31).getCodPrenda());
 				
-			if(contador == 2) {
+			
+				if(contador == 3) {
 					
 				System.out.println("Se rechaza sugerencia "+contador);
 				sugerencia.RechazarSugerencia();
 					
-			}
-			
+				}
+					
 				contador++;
 		}
 		
