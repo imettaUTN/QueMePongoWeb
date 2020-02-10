@@ -171,9 +171,10 @@ public class Guardarropa {
 							for(Object prendaCapaUno:capaUno){
 								
 								Sugerencia sugerencia = new Sugerencia();
+								Prenda p = new Prenda();
 								
 								sugerencia.prendasSugeridas.put(14, (Prenda) prendaCapaCuatro);
-								sugerencia.prendasSugeridas.put(13, (Prenda) prendaCapaTres);
+						 		sugerencia.prendasSugeridas.put(13, (Prenda) prendaCapaTres);
 								sugerencia.prendasSugeridas.put(12, (Prenda) prendaCapaDos);
 								sugerencia.prendasSugeridas.put(11, (Prenda) prendaCapaUno);
 							

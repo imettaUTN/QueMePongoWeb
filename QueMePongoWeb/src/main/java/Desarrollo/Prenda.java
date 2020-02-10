@@ -189,5 +189,4 @@ public class Prenda {
 	public void setCambioNivel(int cambioNivel) {
 		ccNivelDeAbrigo = cambioNivel;
 	}
-	
 }

@@ -48,7 +48,9 @@ public class Sugerencia{
 	public void RechazarSugerencia() {
 		
 		JPAUtil jpa = new JPAUtil();
-		jpa.transaccion().sugerenciaRechaza().persistir(this);
+		this.cargarExclusiones();
+		//jpa.transaccion().sugerenciaRechaza().persistir(this);
+		System.out.println("Fin RechazarSugerencia");
 	}
 	
 	public int getMaxCapaSuperior(){
@@ -77,70 +79,10 @@ public class Sugerencia{
 	
 	public void cargarExclusiones() {
 		
-		Prenda p = new Prenda();
-		p=null;
-		
-		p = this.prendasSugeridas.get(11);
-		
-		if(p != null) {
-		
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(12);
-		
-		if(p != null) {
+		for(Integer key:this.prendasSugeridas.keySet()) {
 			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(13);
-		
-		if(p != null) {
+			this.exclusiones.add(this.prendasSugeridas.get(key));
 			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(14);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(21);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(21);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(31);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(41);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
 		}
 	}
 }

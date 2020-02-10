@@ -28,6 +28,7 @@ public class main {
 		Guardarropa guardarropa = new Guardarropa();
 		
 		usuario = jpa.transaccion().usuario().buscarPorId("Ezequiel");
+		
 		guardarropa = usuario.obtenerGuardarropa(0);
 		guardarropa.setAdministrador(usuario);
 		
@@ -49,7 +50,7 @@ public class main {
 			
 			System.out.println("Combinación: " + contador + "\n");
 			
-			System.out.println("Prendas Combinanadas:" + sugerencia.prendasSugeridas.size());
+			System.out.println("Prendas Combinadas:" + sugerencia.prendasSugeridas.size());
 			
 			if(sugerencia.getMaxCapaSuperior() == 4) {
 				
@@ -89,6 +90,13 @@ public class main {
 			}
 			
 				System.out.println("Calzado:" + sugerencia.prendasSugeridas.get(31).getCodPrenda());
+				
+			if(contador == 2) {
+					
+				System.out.println("Se rechaza sugerencia "+contador);
+				sugerencia.RechazarSugerencia();
+					
+			}
 			
 				contador++;
 		}
