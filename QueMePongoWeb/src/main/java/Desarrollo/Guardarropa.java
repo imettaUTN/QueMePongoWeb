@@ -482,7 +482,7 @@ public class Guardarropa {
 			//Si la combinacion de colores no esta excluida agrego a la lista.
 			if(!excluidos.ejecutar(this.administrador,p1,p2)){
 				
-					if(sugerenciasSeleccionadas <= cantidadMaximaSugerencias) {
+					if(sugerenciasSeleccionadas < cantidadMaximaSugerencias) {
 				
 						sugerenciasColoresExcluidos.add(sugerencia);
 						sugerenciasSeleccionadas++;

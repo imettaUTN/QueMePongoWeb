@@ -29,10 +29,6 @@ public class Prenda {
 	@JoinColumn(name = "CodTipoPrenda", referencedColumnName = "CodTipoPrenda")
 	private TipoPrenda tipoPrenda;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodCategoria", referencedColumnName = "CodCategoria")
-	private Categoria categoria;
-	
 	@Column(name = "PrendaDisponible")
 	private boolean disponible = true;
 	
@@ -68,22 +64,22 @@ public class Prenda {
 	
 	public boolean esInferior(){
 		
-		return (categoria.getCodCategoria() == 2);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 2);
 	}
 	
 	public boolean esSuperior(){
 		
-		return (categoria.getCodCategoria() == 1);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 1);
 	}
 	
 	public boolean esAccesorio(){
 		
-		return (categoria.getCodCategoria() == 4);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 4);
 	}
 	
 	public boolean esCalzado(){
 		
-		return (categoria.getCodCategoria() == 3);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 3);
 	}
 	
 	public void BoquearPrenda() {
@@ -151,11 +147,7 @@ public class Prenda {
 	}
 
 	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+		return this.tipoPrenda.getCategoria();
 	}
 
 	public EnumCapa getNumeroDeCapa() {

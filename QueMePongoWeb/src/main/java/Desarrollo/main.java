@@ -93,7 +93,7 @@ public class main {
 				System.out.println("Calzado:" + sugerencia.prendasSugeridas.get(31).getCodPrenda());
 				
 			
-				if(contador == 3) {
+				if(contador == 150) {
 					
 				System.out.println("Se rechaza sugerencia "+contador);
 				sugerencia.RechazarSugerencia();
