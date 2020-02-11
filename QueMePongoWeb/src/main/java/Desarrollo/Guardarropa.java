@@ -417,6 +417,8 @@ public class Guardarropa {
 							
 							suger.prendasSugeridas.put(31, prendaCalzado);
 							
+							suger.setUsuario(administrador);
+							
 							sugerencias.add(suger);
 					}
 			}

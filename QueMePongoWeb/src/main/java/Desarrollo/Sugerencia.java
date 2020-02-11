@@ -20,7 +20,7 @@ public class Sugerencia{
 	@JoinTable(name="PrendaExclusion", 
 	joinColumns={@JoinColumn(name="CodExclusion", referencedColumnName="CodExclusion")},
 	inverseJoinColumns={@JoinColumn(name="CodPrenda", referencedColumnName="CodPrenda")})
-	private List<Prenda> exclusiones;
+	private List<Prenda> exclusiones = new ArrayList<Prenda>();
 	
 	@Transient
 	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
@@ -49,7 +49,7 @@ public class Sugerencia{
 		
 		JPAUtil jpa = new JPAUtil();
 		this.cargarExclusiones();
-		//jpa.transaccion().sugerenciaRechaza().persistir(this);
+		jpa.transaccion().sugerenciaRechaza().persistir(this);
 		System.out.println("Fin RechazarSugerencia");
 	}
 	
@@ -84,8 +84,19 @@ public class Sugerencia{
 		for(Integer key:this.prendasSugeridas.keySet()) {
 			
 			System.out.println("KEY:"+key);
-			//this.exclusiones.add(this.prendasSugeridas.get(key));
+			Prenda p = new Prenda();
+			p = this.prendasSugeridas.get(key);
+			System.out.println("Prenda:"+p.getCodPrenda());
+			this.exclusiones.add(p);
 			
 		}
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }
