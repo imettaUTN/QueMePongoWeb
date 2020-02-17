@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import javax.persistence.*;
+import javax.swing.text.Document;
+
 import Desarrollo.Enumerados.EnumEstadoEvento;
 import Desarrollo.ObjetosValor.UbicacionEvento;
 
@@ -52,11 +54,12 @@ public class Evento {
 	*/
 	
 	@Transient
-	private Sugerencia sugerenciaSeleccionada; //Debe ser XML para persistir
+	private Document sugerenciaSeleccionada; //Debe ser XML para persistir
 	
 	@Transient
 	private List<Sugerencia> sugerencias = new ArrayList<Sugerencia>(); 
 	
+
 	//private ServidorColaDeEventos servidorCola;
 	//private InvokerGestorEvento invoker;
 	//private LocalDate fechaAlta;

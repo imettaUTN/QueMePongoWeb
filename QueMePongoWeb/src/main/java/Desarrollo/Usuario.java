@@ -1,11 +1,23 @@
 package Desarrollo;
 import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Types;
+
 import Desarrollo.*;
 import Desarrollo.ObjetosValor.UbicacionEvento;
 
 import java.time.LocalDate;
 import java.util.*;
 import javax.persistence.*;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Types;
 
 @Entity
 @Table(name = "Usuarios")
@@ -247,6 +259,20 @@ public class Usuario {
 		return this.getGuardarropas().get(index);
 	}
 	
-	
+	public boolean validaLogin() throws SQLException{
+		
+		boolean valida = true;
+		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
+		CallableStatement miSentencia = cn.prepareCall("{call SP_VALIDAR_LOGIN(?,?,?)}");
+		
+		miSentencia.setString(1, this.getCodigoUsuario());
+		miSentencia.setString(2, this.getPassword());
+		miSentencia.registerOutParameter(3, Types.BIT);
+		
+		miSentencia.execute();
+		valida = miSentencia.getBoolean(3);
+		
+		return valida;
+	}
 	
 }
